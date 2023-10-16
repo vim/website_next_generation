@@ -1,7 +1,7 @@
 
 # Overview
 
-This is the relaunch of the new www.vim.org website. We have found a small team that will take on the i
+This is the relaunch of the new www.vim.org website. We have found a small team that will take on the
 beautiful task of rebuilding the website with current design and new concepts.
 
 The new development should not take place behind closed doors, we want to 
