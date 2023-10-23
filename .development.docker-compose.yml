@@ -1,0 +1,70 @@
+version: "3"
+services:
+  app:
+    container_name: app
+    environment:
+      - CMS_API=http://cms:1337/api
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    volumes:
+      - ./app/src/app:/opt/app/src/app
+    ports:
+      - 3000:3000
+    networks:
+      - vim_network
+
+  db:
+    container_name: db
+    restart: unless-stopped
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_USER=${DATABASE_USERNAME}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_DATABASE=${DATABASE_NAME}
+    volumes:
+      - vim-cms-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - vim_network
+
+  cms:
+    container_name: strapi
+    build:
+      context: ./cms
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: ./cms/.env
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: db
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ./cms/config:/opt/app/config
+      - ./cms/src:/opt/app/src
+      - ./cms/package.json:/opt/package.json
+      - ./cms/.env:/opt/app/.env
+      - ./cms/public/uploads:/opt/app/public/uploads
+    ports:
+      - 1337:1337
+    networks:
+      - vim_network
+    depends_on:
+      - db
+
+volumes:
+  vim-cms-data:
+
+networks:
+  vim_network:
+    name: vim_network
+    driver: bridge
