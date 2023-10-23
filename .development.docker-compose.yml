@@ -22,11 +22,12 @@ services:
       - MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD}
       - MYSQL_USER=${DATABASE_USERNAME}
       - MYSQL_PASSWORD=${DATABASE_PASSWORD}
-      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_DATABASE=${CMS_DATABASE_NAME}
     volumes:
       - vim-cms-data:/var/lib/mysql
+      - ./db/docker-scripts:/docker-entrypoint-initdb.d
     ports:
-      - "3306:3306"
+      - 3306:3306
     networks:
       - vim_network
 
@@ -41,7 +42,7 @@ services:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_HOST: db
       DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_NAME: ${CMS_DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
