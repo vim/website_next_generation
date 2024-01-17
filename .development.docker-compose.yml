@@ -6,9 +6,9 @@ services:
       - CMS_API=http://cms:1337/api
     build:
       context: ./web
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     volumes:
-      - ./web/src/app:/opt/app/src/app
+      - ./web/src:/app/src
     ports:
       - 3000:3000
     networks:

@@ -1,39 +1,36 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "tsconfig.json",
-    "sourceType": "module"
-  },
-  "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers"],
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "rules": {
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error",
-    "react/no-unescaped-entities": "off",
-    "no-console": "warn",
-    "@typescript-eslint/ban-ts-comment": "off",
-    "import-helpers/order-imports": [
-      "error",
-      {
-        "newlinesBetween": "never",
-        "groups": [
-          "/^react$/",
-          "/next/",
-          "module",
-          "/@components/",
-          "/@helpers/",
-          "/@hooks/",
-          "/types/",
-          "/module.scss/",
-          "/public/",
-          ["parent", "sibling", "index"]
-        ],
-        "alphabetize": { "order": "desc", "ignoreCase": true }
-      }
-    ]
-  }
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "**/tsconfig.json",
+        "tsconfigRootDir": "__dirname",
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers"],
+    "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "prettier"],
+    "rules": {
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "react/no-unescaped-entities": "off",
+        "no-console": "warn",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "import-helpers/order-imports": [
+            "error",
+            {
+                "newlinesBetween": "never",
+                "groups": [
+                    "/^react$/",
+                    "/next/",
+                    "module",
+                    "/@components/",
+                    "/@helpers/",
+                    "/@hooks/",
+                    "/types/",
+                    "/module.scss/",
+                    "/public/",
+                    ["parent", "sibling", "index"]
+                ],
+                "alphabetize": { "order": "desc", "ignoreCase": true }
+            }
+        ]
+    }
 }
