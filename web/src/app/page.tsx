@@ -1,4 +1,3 @@
-// Example request to cms
 const cmsContentType = 'announcements';
 fetch(`${process.env.CMS_API}/${cmsContentType}`, {
     headers: {
@@ -12,6 +11,7 @@ export default function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <h1>Vim Landing Page</h1>
+            <button className="btn inverted">Download</button>
         </main>
     );
 }
