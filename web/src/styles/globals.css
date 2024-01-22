@@ -1,33 +1,61 @@
-@import "./components.css";
+@import './components.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --color-primary: #3498db;
-  --color-secondary: #2ecc71;
-  --color-tertiary: #e74c3c;
-  --primary-text: #333;
-  --secondary-text: #555;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    --color-primary: #3498db;
+    --color-secondary: #2ecc71;
+    --color-tertiary: #e74c3c;
+    --primary-text: #333;
+    --secondary-text: #555;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.heading {
+    @apply text-secondary ml-2;
+
+    &::before {
+        content: '>_ ';
+    }
+}
+
+.h1 {
+    font-size: clamp(3rem, 5vw, 5rem);
+    @apply font-[400];
+}
+
+.h2 {
+    font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.h3 {
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.h4 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.h5 {
+    font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+}
+
+.h6 {
+    font-size: clamp(1.5rem, 2vw, 1.25rem);
 }
