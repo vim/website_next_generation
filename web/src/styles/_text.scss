@@ -1,24 +1,53 @@
 .h1 {
     font-size: clamp(3rem, 5vw, 5rem);
-    @apply font-[400];
+    @apply font-[400] text-secondary ml-2;
+
+    &::before {
+        content: '>_ ';
+    }
 }
 
 .h2 {
     font-size: clamp(2rem, 4vw, 4rem);
+    @apply font-[400] text-secondary ml-2;
+
+    &::before {
+        content: '>_ ';
+    }
 }
 
 .h3 {
     font-size: clamp(1.75rem, 3.5vw, 3rem);
+    @apply font-[400] text-secondary ml-2;
+
+    &::before {
+        content: '>_ ';
+    }
 }
 
 .h4 {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
+    @apply font-[400] text-secondary ml-2;
+
+    &::before {
+        content: '>_ ';
+    }
 }
 
 .h5 {
     font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+    @apply font-[400] text-secondary ml-2;
+
+    &::before {
+        content: '>_ ';
+    }
 }
 
 .h6 {
     font-size: clamp(1.5rem, 2vw, 1.25rem);
+    @apply font-[400] text-secondary ml-2;
+
+    &::before {
+        content: '>_ ';
+    }
 }
