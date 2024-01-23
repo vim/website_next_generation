@@ -1,0 +1,3 @@
+.btn-primary {
+    @apply border-solid border-[1px] rounded-xl border-secondary text-secondary py-3 px-6 transition-all hover:bg-secondary hover:text-white;
+}
