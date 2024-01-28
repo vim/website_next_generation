@@ -1,24 +1,29 @@
 import { CSSProperties, ChangeEvent, useState } from 'react';
-import { isRequiredValidator } from '@/helpers/validators';
 
 type InputProps = {
     type: 'text' | 'number' | 'email' | 'password';
     label?: string;
     id: string;
     required?: boolean;
+    validate?: (value: string) => string | undefined;
     placeholder?: string;
     value: string;
     name: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function Input({ type, label, id, required, placeholder, value, name, onChange }: InputProps) {
+export default function Input({ type, label, id, required, validate, placeholder, value, name, onChange }: InputProps) {
     const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
 
     const handleBlur = () => {
         if (required) {
-            const error = isRequiredValidator(value);
+            const error = value ? undefined : 'Required';
             setErrorMessage(error);
+            if (error) return;
+        }
+
+        if (validate) {
+            setErrorMessage(validate(value));
         }
     };
 
