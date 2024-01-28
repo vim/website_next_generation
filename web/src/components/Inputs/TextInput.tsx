@@ -31,7 +31,7 @@ export default function Input({ type, label, id, required, placeholder, value, n
         <div>
             {label && <label htmlFor={id}>{label}</label>}
             <input
-                className="border-[1px] border-solid rounded-lg border-gray-1 py-2 px-4 text-white bg-gray-2"
+                className="border-[3px] border-solid rounded-lg border-gray-1 py-2 px-5 text-white bg-gray-2 outline-none focus:border-secondary focus-visible:border-secondary active:border-secondary"
                 type={type}
                 value={value}
                 name={name}
