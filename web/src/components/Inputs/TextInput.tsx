@@ -23,7 +23,7 @@ export default function Input({ type, label, id, required, placeholder, value, n
     };
 
     return (
-        <div className="relative flex flex-col">
+        <div className="flex flex-col">
             {label && (
                 <label className={`mb-1 ${errorMessage && 'text-red-800'}`} htmlFor={id}>
                     {`${label}*`}
