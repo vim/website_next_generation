@@ -26,18 +26,18 @@ export default function Registration() {
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
     return (
-        <form className="flex flex-col items-stretch gap-4">
-            <Input
-                type="text"
-                label="Username"
-                name="username"
-                id="username"
-                value={formData.username}
-                onChange={handleInputChange}
-                required
-            />
-            <div className="flex justify-between gap-5">
-                <div className="flex-2/3">
+        <div className="grid grid-cols-1 xl:grid-cols-2 xl:gap-8">
+            <form className="flex flex-col items-stretch gap-4">
+                <Input
+                    type="text"
+                    label="Username"
+                    name="username"
+                    id="username"
+                    value={formData.username}
+                    onChange={handleInputChange}
+                    required
+                />
+                <div className="grid grid-cols-1 xl:grid-cols-2 xl:gap-3">
                     <Input
                         type="text"
                         label="First Name"
@@ -47,8 +47,6 @@ export default function Registration() {
                         onChange={handleInputChange}
                         required
                     />
-                </div>
-                <div className="flex-1">
                     <Input
                         type="text"
                         label="Last Name"
@@ -59,35 +57,44 @@ export default function Registration() {
                         required
                     />
                 </div>
+                <Input
+                    type="text"
+                    label="Email Address"
+                    name="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                />
+                <Input
+                    type="password"
+                    label="Password"
+                    name="password"
+                    id="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                />
+                <Input
+                    type="password"
+                    label="Confirm Password"
+                    name="passwordConfirm"
+                    id="passwordConfirm"
+                    value={formData.passwordConfirm}
+                    onChange={handleInputChange}
+                    required
+                />
+                <input className="btn ml-auto hover:cursor-pointer" type="submit" value="Register" />
+            </form>
+            <div>
+                <h2 className="text-secondary">Please note</h2>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel est adipisci quas, aperiam voluptas,
+                    omnis tempora blanditiis quae fuga eum ullam commodi a perspiciatis provident pariatur sunt
+                    excepturi doloremque! Commodi!
+                </p>
             </div>
-            <Input
-                type="text"
-                label="Email Address"
-                name="email"
-                id="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-            />
-            <Input
-                type="password"
-                label="Password"
-                name="password"
-                id="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-            />
-            <Input
-                type="password"
-                label="Confirm Password"
-                name="passwordConfirm"
-                id="passwordConfirm"
-                value={formData.passwordConfirm}
-                onChange={handleInputChange}
-                required
-            />
-            <input className="ml-auto" type="submit" value="Register" />
-        </form>
+        </div>
     );
 }
