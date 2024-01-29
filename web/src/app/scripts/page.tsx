@@ -35,8 +35,9 @@ const columns: ColumnDef<Script>[] = [
         header: 'Name',
     },
     {
-        accessorKey: 'downloadIcon',
+        accessorKey: 'download',
         header: 'Download',
+        cell: () => 'Download Icon',
     },
     {
         accessorKey: 'type',
@@ -45,6 +46,11 @@ const columns: ColumnDef<Script>[] = [
     {
         accessorKey: 'description',
         header: 'Description',
+    },
+    {
+        accessorKey: 'plus',
+        header: '',
+        cell: () => 'plus icon',
     },
 ];
 
@@ -56,38 +62,49 @@ export default function Scripts() {
         getCoreRowModel: getCoreRowModel(),
     });
     return (
-        <table>
-            <thead>
-                {table.getHeaderGroups().map((headerGroup) => {
-                    return (
-                        <tr key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => {
-                                return (
-                                    <th id={header.id} key={header.id}>
-                                        {' '}
-                                        {header.isPlaceholder
-                                            ? null
-                                            : flexRender(header.column.columnDef.header, header.getContext())}
-                                    </th>
-                                );
-                            })}
-                        </tr>
-                    );
-                })}
-            </thead>
-            <tbody>
-                {table.getRowModel().rows.map((row) => {
-                    return (
-                        <tr key={row.id}>
-                            {row.getVisibleCells().map((cell) => {
-                                return (
-                                    <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                                );
-                            })}
-                        </tr>
-                    );
-                })}
-            </tbody>
-        </table>
+        <>
+            <div className="flex items-center">
+                <h1 className="h3">Scripts</h1>
+                <div className="flex gap-3 mr-0 ml-auto">
+                    <button className="btn">Add New Script</button>
+                    <input type="text" />
+                </div>
+            </div>
+            <table className="border-separate border-spacing-y-[5px]">
+                <thead className="py-5 bg-green-500 bg-opacity-30">
+                    {table.getHeaderGroups().map((headerGroup) => {
+                        return (
+                            <tr key={headerGroup.id}>
+                                {headerGroup.headers.map((header) => {
+                                    return (
+                                        <th className="py-2 pl-3 text-left" id={header.id} key={header.id}>
+                                            {' '}
+                                            {header.isPlaceholder
+                                                ? null
+                                                : flexRender(header.column.columnDef.header, header.getContext())}
+                                        </th>
+                                    );
+                                })}
+                            </tr>
+                        );
+                    })}
+                </thead>
+                <tbody>
+                    {table.getRowModel().rows.map((row) => {
+                        return (
+                            <tr className="odd:bg-gray-500 even:bg-gray-900" key={row.id}>
+                                {row.getVisibleCells().map((cell) => {
+                                    return (
+                                        <td className="pl-3" key={cell.id}>
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+        </>
     );
 }
