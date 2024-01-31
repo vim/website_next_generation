@@ -1,14 +1,14 @@
 version: "3"
 services:
-  app:
+  web:
     container_name: app
     environment:
       - CMS_API=http://cms:1337/api
     build:
-      context: ./app
-      dockerfile: Dockerfile
+      context: ./web
+      dockerfile: Dockerfile.dev
     volumes:
-      - ./app/src/app:/opt/app/src/app
+      - ./web/src:/app/src
     ports:
       - 3000:3000
     networks:

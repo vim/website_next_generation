@@ -1,0 +1,11 @@
+{
+  "name": "website_next_generation",
+  "version": "1.0.0",
+  "description": "Next generation of Vim Landing Page",
+  "scripts": {
+    "dev": "docker compose -f .development.docker-compose.yml up -d --build",
+    "setup": "node ./cms/init-env.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

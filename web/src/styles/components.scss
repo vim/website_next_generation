@@ -1,0 +1,9 @@
+@layer components {
+    .btn {
+        @apply border-2 rounded-xl px-2 py-1;
+    }
+
+    .btn.inverted {
+        @apply text-primary border-primary;
+    }
+}
