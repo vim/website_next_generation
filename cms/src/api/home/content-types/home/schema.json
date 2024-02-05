@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "homes",
+  "info": {
+    "singularName": "home",
+    "pluralName": "homes",
+    "displayName": "home",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "body": {
+      "type": "dynamiczone",
+      "components": [
+        "action.donate-button",
+        "action.download-button",
+        "card.learning-card",
+        "content.about-vim-section",
+        "content.spronsoring-section",
+        "content.welcome-section"
+      ]
+    }
+  }
+}
