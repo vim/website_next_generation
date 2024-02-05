@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_welcome_sections",
+  "info": {
+    "displayName": "welcome-section",
+    "icon": "filter"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
