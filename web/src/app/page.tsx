@@ -1,3 +1,5 @@
+import ButtonPrimary from "@/components/Buttons/ButtonPrimary";
+import ContentSection from "@/components/Sections/ContentSection";
 
     type Section = {
         id:number,
@@ -45,11 +47,20 @@ export default async function Home() {
             {Object.keys(singleTypeComponentHomeData).map((key) => {
                 if(key ==='welcome-section'){
                     const component = singleTypeComponentHomeData[key]
-                    return (<><h2 key = {key}>{component.title}</h2> 
-                    <p key = {key}>{component.description}</p>
-                    </>)
+                    return (
+                        <div key={key} className="flex flex-col items-center justify-center h-screen">
+                    <div  className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                        <div className="flex flex-col justify-end">
+                            <ContentSection title={component.title} description={component.description} />
+                        </div>
+                        <div className="flex justify-end items-end">
+                            <ButtonPrimary>Download</ButtonPrimary>
+                        </div>
+                        </div>
+                    </div>)
                 }
             })}
+            <h2>This is another element</h2>
         </main>
     );
 }
