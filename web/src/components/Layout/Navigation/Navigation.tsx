@@ -16,7 +16,7 @@ export default function Navigation() {
 
                 <div>
                     <a href="/my-account">
-                        <IconUserCircle size={24} />
+                        {/* <IconUserCircle size={24} /> */}
                         My Account
                     </a>
                 </div>

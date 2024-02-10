@@ -1,11 +1,11 @@
-const cmsContentType = 'announcements';
-fetch(`${process.env.CMS_API}/${cmsContentType}`, {
-    headers: {
-        authorization: `Bearer ${process.env.CMS_TOKEN}`,
-    },
-})
-    .then((ok) => ok.json())
-    .then((res) => console.log(res));
+// const cmsContentType = 'announcements';
+// fetch(`${process.env.CMS_API}/${cmsContentType}`, {
+//     headers: {
+//         authorization: `Bearer ${process.env.CMS_TOKEN}`,
+//     },
+// })
+//     .then((ok) => ok.json())
+//     .then((res) => console.log(res));
 
 export default function Home() {
     return (
