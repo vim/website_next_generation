@@ -16,7 +16,6 @@
       "type": "dynamiczone",
       "components": [
         "action.donate-button",
-        "action.download-button",
         "card.learning-card",
         "content.about-vim-section",
         "content.spronsoring-section",

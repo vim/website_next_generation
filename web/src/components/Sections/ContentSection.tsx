@@ -6,7 +6,7 @@ type ContentSectionProps = {
 
 export default function ContentSection({ title, description }:ContentSectionProps){
     return(<>
-      <h2>{title}</h2>
+      <h2 className="mb-4">{title}</h2>
       <p>{description}</p>
     </>) 
 }
