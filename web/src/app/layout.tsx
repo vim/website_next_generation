@@ -12,21 +12,20 @@ export const metadata: Metadata = {
 
 async function getPageProps() {
     const respose = await fetch(`${process.env.CMS_API}/pages`, {
-        headers: {
-            authorization: `Bearer ${process.env.CMS_TOKEN}`,
-        },
+        // headers: {
+        //     authorization: `Bearer ${process.env.CMS_TOKEN}`,
+        // },
     });
-    return await respose.json();
+    return (await respose.json()).data;
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     const pageProps = await getPageProps();
-    console.log(pageProps);
 
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Layout>{children}</Layout>
+                <Layout pages={pageProps}>{children}</Layout>
             </body>
         </html>
     );
