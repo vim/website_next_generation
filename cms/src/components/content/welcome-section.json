@@ -2,7 +2,8 @@
   "collectionName": "components_content_welcome_sections",
   "info": {
     "displayName": "welcome-section",
-    "icon": "filter"
+    "icon": "filter",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,6 +15,9 @@
     },
     "description": {
       "type": "text"
+    },
+    "buttonTitle": {
+      "type": "string"
     }
   }
 }
