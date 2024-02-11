@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "PageTitle": {
+    "pageTitle": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,19 +24,33 @@
       },
       "type": "string"
     },
-    "subpages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::subpage.subpage"
-    },
-    "visible": {
+    "heroSection": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "boolean",
-      "default": true
+      "type": "dynamiczone",
+      "components": [
+        "general.button",
+        "general.card"
+      ],
+      "min": 0,
+      "max": 1
+    },
+    "contentSection": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "general.button",
+        "general.card",
+        "collection.card-collection"
+      ],
+      "required": true
     }
   }
 }

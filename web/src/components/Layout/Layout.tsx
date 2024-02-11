@@ -9,8 +9,8 @@ type LayoutProps = {
 export default function Layout({ children, pages }: PropsWithChildren<LayoutProps>) {
     return (
         <div className="bg-slate-700">
-            <Navigation pages={pages} />
-            <div className="ml-[20vw] w-[78vw]">
+            <Navigation menu={pages} />
+            <div className="ml-52">
                 {children}
                 <Footer />
             </div>

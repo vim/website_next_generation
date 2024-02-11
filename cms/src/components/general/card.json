@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_general_cards",
+  "info": {
+    "displayName": "Card",
+    "icon": "discuss",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.button"
+    }
+  }
+}

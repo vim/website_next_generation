@@ -1,36 +1,40 @@
+'use client';
 import { IconUserCircle } from '@tabler/icons-react';
 
 type NavigationProps = {
-    pages: Page[];
+    menu: Page[];
 };
 export type Page = {
     id: number;
     attributes: {
-        PageTitle: string;
+        title: string;
+        url: string;
         locale: 'en';
         visible: boolean;
     };
 };
 
-export default function Navigation({ pages }: NavigationProps) {
+export default function Navigation({ menu }: NavigationProps) {
+    console.log({ menu });
+
     return (
-        <header className="h-screen w-[20vw] bg-slate-900 p-4 rounded-2xl fixed left-0 top-0 border border-zinc-500">
-            <nav>
-                <a href="/">
+        <header className="sidebar">
+            <nav className="flex flex-col items-center justify-between h-full">
+                <a className="w-3/4" href="/">
                     <img src="/vim.svg" alt="Vim Logo" />
                 </a>
-                <ul>
-                    {pages.map((page) => {
-                        return page.attributes.visible ? (
-                            <li key={page.id}>
-                                <a href={`/${page.attributes.PageTitle.toLowerCase()}`}>{page.attributes.PageTitle}</a>
+                <ul className="w-full flex flex-col gap-2">
+                    {menu.map((menuItem) => {
+                        return (
+                            <li className="nav-link" key={menuItem.id}>
+                                <a href={`/${menuItem.attributes.url}`}>{menuItem.attributes.title}</a>
                             </li>
-                        ) : null;
+                        );
                     })}
                 </ul>
 
                 <div>
-                    <a href="/my-account">
+                    <a className="flex flex-row gap-2" href="/my-account">
                         <IconUserCircle size={24} />
                         My Account
                     </a>

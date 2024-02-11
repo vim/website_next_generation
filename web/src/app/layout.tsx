@@ -1,7 +1,19 @@
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../styles/globals.scss';
+import qs from 'qs';
 import Layout from '@/components/Layout/Layout';
+
+const params = {
+    nested: true,
+    populate: {
+        items: {
+            populate: {
+                page_relation: true,
+            },
+        },
+    },
+};
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -11,12 +23,13 @@ export const metadata: Metadata = {
 };
 
 async function getPageProps() {
-    const respose = await fetch(`${process.env.CMS_API}/pages`, {
+    const query = qs.stringify(params, { addQueryPrefix: true });
+    const respose = await fetch(`${process.env.CMS_API}/menus/1${query}`, {
         // headers: {
         //     authorization: `Bearer ${process.env.CMS_TOKEN}`,
         // },
     });
-    return (await respose.json()).data;
+    return (await respose.json()).data.attributes.items.data;
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

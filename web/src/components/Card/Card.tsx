@@ -1,7 +1,5 @@
-type CardProps = {
-    children: React.ReactNode;
-};
+import React from 'react';
 
-export default function Card({ children }: CardProps) {
-    return <div className="rounded-xl pt-6 px-6 pb-10 bg-gray-1">{children}</div>;
+export default function Card() {
+    return <div className="border-primary border-2 p-5 rounded-2xl">Card Content</div>;
 }

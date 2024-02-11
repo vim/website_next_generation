@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_hero_sections",
+  "info": {
+    "displayName": "Hero Section",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "listItems": {
+      "displayName": "list",
+      "type": "component",
+      "repeatable": true,
+      "component": "general.list"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.button"
+    }
+  }
+}
