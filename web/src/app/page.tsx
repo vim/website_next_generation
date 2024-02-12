@@ -1,6 +1,17 @@
 import ButtonPrimary from "@/components/Buttons/ButtonPrimary";
 import ContentSection from "@/components/Sections/ContentSection";
 
+const params = {
+    nested: true,
+    populate: {
+        items: {
+            populate: {
+                page_relation: true,
+            },
+        },
+    },
+};
+
     type Section = {
         id:number,
         __component:string
@@ -12,6 +23,8 @@ import ContentSection from "@/components/Sections/ContentSection";
     type HomeComponents = {
         [key: string]: Omit<Section, 'id' | '__component'>;
       };
+
+
 
     //TODO: Unhappy with types => Change them
     async function fetchSingleTypeComponentHome(){
@@ -37,6 +50,7 @@ import ContentSection from "@/components/Sections/ContentSection";
 
     async function  getSingleTypeComponentHomeData(){
         const response = await fetchSingleTypeComponentHome()
+        console.log("This is the data: ", response.data)
          return unwrapSingleTypeComponentHome(response.data.attributes.body) 
     }
 
