@@ -15,11 +15,9 @@
     "body": {
       "type": "dynamiczone",
       "components": [
-        "action.donate-button",
-        "card.learning-card",
-        "content.about-vim-section",
-        "content.spronsoring-section",
-        "content.welcome-section"
+        "sections.hero-section",
+        "general.button",
+        "general.card"
       ]
     }
   }
