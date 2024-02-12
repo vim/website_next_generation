@@ -29,7 +29,10 @@ async function getPageProps() {
         //     authorization: `Bearer ${process.env.CMS_TOKEN}`,
         // },
     });
-    return (await respose.json()).data.attributes.items.data;
+    
+    const jsonData = await respose.json();
+    console.log("This is the layout: ", jsonData.data)
+    return jsonData.data.attributes.items.data;
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
