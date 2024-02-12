@@ -1,14 +1,15 @@
 {
   "collectionName": "components_general_cards",
   "info": {
-    "displayName": "Card",
-    "icon": "discuss",
+    "displayName": "Section",
+    "icon": "layer",
     "description": ""
   },
   "options": {},
   "attributes": {
     "headline": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
       "type": "richtext"
@@ -17,6 +18,16 @@
       "type": "component",
       "repeatable": false,
       "component": "general.button"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Plain",
+        "Card",
+        "Accordion"
+      ],
+      "default": "Plain",
+      "required": true
     }
   }
 }

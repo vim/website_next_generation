@@ -47,8 +47,7 @@
       "type": "dynamiczone",
       "components": [
         "general.button",
-        "general.card",
-        "collection.card-collection"
+        "general.card"
       ],
       "required": true
     }
