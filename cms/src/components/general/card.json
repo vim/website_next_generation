@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_general_cards",
+  "info": {
+    "displayName": "Section",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "headline": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.button"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Plain",
+        "Card",
+        "Accordion"
+      ],
+      "default": "Plain",
+      "required": true
+    }
+  }
+}

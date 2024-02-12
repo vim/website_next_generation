@@ -8,14 +8,15 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "init-env":"node init-env.js"
+    "init-env": "node init-env.js"
   },
   "dependencies": {
     "@strapi/plugin-i18n": "4.14.5",
     "@strapi/plugin-users-permissions": "4.14.5",
     "@strapi/strapi": "4.14.5",
     "mysql": "2.18.1",
-    "mysql2": "^3.6.2"
+    "mysql2": "^3.6.2",
+    "strapi-plugin-menus": "^1.6.1"
   },
   "author": {
     "name": "A Strapi developer"
