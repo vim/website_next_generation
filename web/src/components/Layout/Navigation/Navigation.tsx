@@ -15,7 +15,6 @@ export type Page = {
 };
 
 export default function Navigation({ menu }: NavigationProps) {
-    console.log({ menu });
 
     return (
         <header className="sidebar">

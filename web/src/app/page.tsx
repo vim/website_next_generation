@@ -1,35 +1,34 @@
-import ButtonPrimary from "@/components/Buttons/ButtonPrimary";
+import qs from 'qs';
+import HeroSection from "@/components/Sections/HeroSection";
 import ContentSection from "@/components/Sections/ContentSection";
+import ButtonPrimary from "@/components/Buttons/ButtonPrimary";
 
-const params = {
-    nested: true,
-    populate: {
-        items: {
-            populate: {
-                page_relation: true,
-            },
-        },
+
+
+const query = qs.stringify(
+    {
+        populate: ['body, body.listItems, body.cta','body.button'],
     },
-};
+    {
+      encodeValuesOnly: true,
+    }
+  );
 
     type Section = {
         id:number,
-        __component:string
-        title?:string,
-        description?:string,
-        buttonTitle?:string
+        __component:string,
+        headline?:string,
+        listItems?: {item:string,id:number}[];
+        text:string,
+        cta: {id:string, text:string,type:string,url:string},
     }
 
     type HomeComponents = {
         [key: string]: Omit<Section, 'id' | '__component'>;
       };
 
-
-
-    //TODO: Unhappy with types => Change them
     async function fetchSingleTypeComponentHome(){
-        const response = await fetch(`${process.env.CMS_API}/home?populate=*`)
-
+        const response = await fetch(`${process.env.CMS_API}/home?${query}`)
         if(!response.ok){
             throw new Error('Fetching single type component home failed');
         }
@@ -38,50 +37,46 @@ const params = {
 
     function unwrapSingleTypeComponentHome(body: Section[]): HomeComponents {
         const unwrapedComponents: HomeComponents = {};
-      
         body.forEach(section => {
-          const componentType = section.__component.split('.')[1];
-          const { id, __component, ...rest } = section;
-          unwrapedComponents[componentType] = rest;
+            const sectionType = section.__component.split('.')[1];
+            const { id, __component, ...rest } = section;
+            unwrapedComponents[sectionType+"."+id] = rest;
         });
-      
         return unwrapedComponents;
       }
 
     async function  getSingleTypeComponentHomeData(){
         const response = await fetchSingleTypeComponentHome()
-        console.log("This is the data: ", response.data)
-         return unwrapSingleTypeComponentHome(response.data.attributes.body) 
+        return unwrapSingleTypeComponentHome(response.data.attributes.body) 
     }
 
 export default async function Home() {
-    const singleTypeComponentHomeData = await getSingleTypeComponentHomeData()
-    console.log(singleTypeComponentHomeData)
+    const singleTypeComponents = await getSingleTypeComponentHomeData()    
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            {Object.keys(singleTypeComponentHomeData).map((key) => {
-                const component = singleTypeComponentHomeData[key]
-                switch(key){
-                    case 'welcome-section':
+            {
+                Object.keys(singleTypeComponents).map((key) => {
+                    const component = singleTypeComponents[key]
+                    if(key.split('.')[0]==='hero-section'){
                         return (
                             <div key={key} className="flex flex-col items-center justify-center h-screen">
                                 <div  className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                                     <div className="flex flex-col justify-end">
-                                        <ContentSection title={component.title} description={component.description}/>
+                                        <HeroSection headline={component.headline} listItems={component.listItems}/>
                                     </div>
                                     <div className="flex justify-end items-end">
-                                        <ButtonPrimary>{component.buttonTitle}</ButtonPrimary>
+                                        <ButtonPrimary>{component.cta.text}</ButtonPrimary>
                                     </div>
                                 </div>
                             </div>)
-                    case 'about-vim-section':
-                        return(
-                            <div key = {key}>
-                                <ContentSection title={component.title} description={component.description}/>
-                            </div>
-                        )
-                }
-            })}
+                    }
+                    else{
+                        return(<div>
+                            {/* Add other elements of home page*/}
+                        </div>) 
+                    }
+                })
+            }
         </main>
     );
 }

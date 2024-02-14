@@ -4,7 +4,7 @@
   "info": {
     "singularName": "home",
     "pluralName": "homes",
-    "displayName": "home",
+    "displayName": "Home",
     "description": ""
   },
   "options": {
@@ -15,9 +15,10 @@
     "body": {
       "type": "dynamiczone",
       "components": [
-        "sections.hero-section",
         "general.button",
-        "general.card"
+        "general.card",
+        "sections.hero-section",
+        "general.list"
       ]
     }
   }
