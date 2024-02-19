@@ -1,6 +1,7 @@
 import qs from 'qs';
 import HeroSection from "@/components/Sections/HeroSection";
 import ContentSection from "@/components/Sections/ContentSection";
+import Card from "@/components/Sections/Card";
 import ButtonPrimary from "@/components/Buttons/ButtonPrimary";
 
 
@@ -21,6 +22,8 @@ const query = qs.stringify(
         listItems?: {item:string,id:number}[];
         text:string,
         cta: {id:string, text:string,type:string,url:string},
+        description?:string,
+        button: {id:string, text:string,type:string,url:string}
     }
 
     type HomeComponents = {
@@ -65,15 +68,28 @@ export default async function Home() {
                                         <HeroSection headline={component.headline} listItems={component.listItems}/>
                                     </div>
                                     <div className="flex justify-end items-end">
-                                        <ButtonPrimary>{component.cta.text}</ButtonPrimary>
+                                        <ButtonPrimary type={component.cta.type}>{component.cta.text}</ButtonPrimary>
                                     </div>
                                 </div>
                             </div>)
                     }
-                    else{
-                        return(<div>
-                            {/* Add other elements of home page*/}
+                    else if (key.split('.')[0]==='card' && key.split('.')[1]==='1'){
+                        return(<div key={key}>
+                                <ContentSection  headline={component.headline} description={component.description}/>
                         </div>) 
+                    }
+                    else if (key.split('.')[0]==='card' && key.split('.')[1]==='2'){
+                        return(<Card key={key} width = {12}>
+                                <div>
+                                    <ContentSection headline={component.headline} description={component.description}/>
+                                    <ButtonPrimary type={component.button.type}>{component.button.text}</ButtonPrimary>
+                                </div>
+                            </Card>) 
+                    }
+                    else if(key.split('.')[0]==='card' && key.split('.')[1]==='3'){
+                        return(<div key={key}>
+                            <ContentSection key={key} headline={component.headline} description={component.description}/>
+                        </div>)
                     }
                 })
             }

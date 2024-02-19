@@ -1,12 +1,12 @@
 
 type ContentSectionProps = {
-    title?: string;
+    headline?: string;
     description?: string;
   };
 
-export default function ContentSection({ title, description }:ContentSectionProps){
+export default function ContentSection({ headline, description }:ContentSectionProps){
     return(<>
-      <h2 className="mb-4">{title}</h2>
+      <h2 className="mb-4">{headline}</h2>
       <p>{description}</p>
     </>) 
 }
