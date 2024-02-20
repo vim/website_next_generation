@@ -74,21 +74,28 @@ export default async function Home() {
                             </div>)
                     }
                     else if (key.split('.')[0]==='card' && key.split('.')[1]==='1'){
-                        return(<div key={key}>
+                        return(<div key={key} className="mb-32">
                                 <ContentSection  headline={component.headline} description={component.description}/>
                         </div>) 
                     }
                     else if (key.split('.')[0]==='card' && key.split('.')[1]==='2'){
-                        return(<Card key={key} width = {12}>
-                                <div>
-                                    <ContentSection headline={component.headline} description={component.description}/>
-                                    <ButtonPrimary type={component.button.type}>{component.button.text}</ButtonPrimary>
-                                </div>
-                            </Card>) 
+                        return(<div key={key} className="mb-32">
+                                <Card width = {12}>
+                                    <div className="flex flex-col items-start justify-between">
+                                        <ContentSection headline={component.headline} description={component.description}/>
+                                        <div className="self-end mt-8">
+                                            <ButtonPrimary type={component.button.type}>{component.button.text}</ButtonPrimary>
+                                        </div>
+                                    </div>
+                                </Card>
+                            </div>) 
                     }
                     else if(key.split('.')[0]==='card' && key.split('.')[1]==='3'){
-                        return(<div key={key}>
+                        return(<div key={key} className="flex flex-col items-start justify-between">
                             <ContentSection key={key} headline={component.headline} description={component.description}/>
+                            <div className="self-end mt-8">
+                                <ButtonPrimary type={component.button.type}>{component.button.text}</ButtonPrimary>
+                            </div>
                         </div>)
                     }
                 })

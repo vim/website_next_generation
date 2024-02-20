@@ -9,7 +9,7 @@ export default function ContentSection({ headline, listItems }:HeroSectionProps)
       <h2 className="mb-4">{headline}</h2>
       {
         listItems?.map((item, index) => {
-          return <p key={index}>{item.item}</p>
+          return <p key={index}>&gt; {item.item}</p>
         })
       }
     </>) 
