@@ -2,6 +2,8 @@ version: "3"
 services:
   web:
     container_name: app
+    env_file:
+      - web/.env
     environment:
       - CMS_API=http://cms:1337/api
     build:
