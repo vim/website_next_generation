@@ -1,0 +1,233 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::plugin::menus.menu-item",
+  "value": {
+    "uid": "plugin::menus.menu-item",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "order": {
+        "edit": {
+          "label": "order",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "order",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "url": {
+        "edit": {
+          "label": "url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "url",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "target": {
+        "edit": {
+          "label": "target",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "target",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "root_menu": {
+        "edit": {
+          "label": "root_menu",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "root_menu",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "parent": {
+        "edit": {
+          "label": "parent",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "parent",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "page_relation": {
+        "edit": {
+          "label": "page_relation",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "pageTitle"
+        },
+        "list": {
+          "label": "page_relation",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "order",
+        "title",
+        "url"
+      ],
+      "edit": [
+        [
+          {
+            "name": "order",
+            "size": 4
+          },
+          {
+            "name": "title",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "url",
+            "size": 6
+          },
+          {
+            "name": "target",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "root_menu",
+            "size": 6
+          },
+          {
+            "name": "parent",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "page_relation",
+            "size": 6
+          }
+        ]
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

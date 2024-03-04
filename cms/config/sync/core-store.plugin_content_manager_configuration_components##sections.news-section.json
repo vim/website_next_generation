@@ -1,0 +1,76 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.news-section",
+  "value": {
+    "uid": "sections.news-section",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "headline",
+      "defaultSortBy": "headline",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "headline": {
+        "edit": {
+          "label": "headline",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headline",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "newsCount": {
+        "edit": {
+          "label": "newsCount",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "newsCount",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "headline",
+        "newsCount"
+      ],
+      "edit": [
+        [
+          {
+            "name": "headline",
+            "size": 6
+          },
+          {
+            "name": "newsCount",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

@@ -1,0 +1,119 @@
+{
+  "key": "plugin_content_manager_configuration_components::general.card",
+  "value": {
+    "uid": "general.card",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "headline",
+      "defaultSortBy": "headline",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "headline": {
+        "edit": {
+          "label": "headline",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headline",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "button": {
+        "edit": {
+          "label": "button",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "button",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "type": {
+        "edit": {
+          "label": "type",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "type",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "headline",
+        "button",
+        "type"
+      ],
+      "edit": [
+        [
+          {
+            "name": "headline",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "button",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "type",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
