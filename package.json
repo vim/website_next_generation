@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Next generation of Vim Landing Page",
   "scripts": {
-    "dev": "docker compose -f .development.docker-compose.yml up -d --build",
+    "dev": "docker compose -f .development.docker-compose.yml up -d --build"
   },
   "author": "",
   "license": "ISC"
