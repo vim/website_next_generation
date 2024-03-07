@@ -62,6 +62,14 @@ check-env:
 	./scripts/check-env.sh .env.example web/.env
 	./scripts/check-env.sh cms/.env.example cms/.env
 
+# NOTE: Package throws an error when using the CLI to import or export config
+import-config:
+	@echo "Syncing config files to the database"
+	cd cms/ && npm run cs i
+export-config:
+	@echo "Exporting config files from the database"
+	cd cms/ && npm run cs e
+
 logs:
 	$(DC) logs -t -f web db cms
 
