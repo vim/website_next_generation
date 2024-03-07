@@ -1,18 +1,18 @@
 // ./config/plugins.js`
-'use strict';
+"use strict";
 
 module.exports = {
   menus: {
     config: {
       layouts: {
         menuItem: {
-          link: [ 
+          link: [
             {
-                input: {
-                    label: 'Page Relation',
-                    name: 'page_relation',
-                    type: 'relation',
-                  },
+              input: {
+                label: "Page Relation",
+                name: "page_relation",
+                type: "relation",
+              },
               grid: {
                 col: 6,
               },
@@ -20,6 +20,18 @@ module.exports = {
           ],
         },
       },
+    },
+  },
+  "config-sync": {
+    enabled: true,
+    config: {
+      syncDir: "config/sync/",
+      minify: false,
+      soft: false,
+      importOnBootstrap: false,
+      customTypes: [],
+      excludedTypes: [],
+      excludedConfig: [],
     },
   },
 };
