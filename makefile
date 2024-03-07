@@ -44,9 +44,11 @@ help:
 
 install:
 	@echo "Installing web dependencies"
-	@cd web && npm install
+	@echo "==========================="
+	cd web && . ${NVM_DIR}/nvm.sh && nvm use && npm install
 	@echo "Installing cms dependencies"
-	@cd cms && npm install
+	@echo "==========================="
+	cd cms && . ${NVM_DIR}/nvm.sh && nvm use && npm install
 
 init-env:
 	test -f .env || cp .env.example .env
