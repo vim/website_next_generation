@@ -1,39 +1,33 @@
 {
-  "kind": "collectionType",
-  "collectionName": "pages",
-  "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page",
-    "description": ""
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
-  "attributes": {
-    "pageTitle": {
-      "pluginOptions": {},
-      "type": "string"
-    },
-    "heroSection": {
-      "pluginOptions": {},
-      "type": "dynamiczone",
-      "components": [
-        "general.button",
-        "general.card"
-      ],
-      "min": 0,
-      "max": 1
-    },
-    "contentSection": {
-      "pluginOptions": {},
-      "type": "dynamiczone",
-      "components": [
-        "general.button",
-        "general.card"
-      ],
-      "required": true
-    }
-  }
+	"kind": "collectionType",
+	"collectionName": "pages",
+	"info": {
+		"singularName": "page",
+		"pluralName": "pages",
+		"displayName": "Page",
+		"description": ""
+	},
+	"options": {
+		"draftAndPublish": true
+	},
+	"pluginOptions": {},
+	"attributes": {
+		"pageTitle": {
+			"pluginOptions": {},
+			"type": "string"
+		},
+		"heroSection": {
+			"pluginOptions": {},
+			"type": "dynamiczone",
+			"components": ["general.button", "general.card"],
+			"min": 0,
+			"max": 1
+		},
+		"contentSection": {
+			"pluginOptions": {},
+			"type": "dynamiczone",
+			"components": ["general.button", "general.card"],
+			"required": true
+		}
+	}
 }

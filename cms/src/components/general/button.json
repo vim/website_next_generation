@@ -1,26 +1,22 @@
 {
-  "collectionName": "components_general_buttons",
-  "info": {
-    "displayName": "Button",
-    "icon": "cursor",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "text": {
-      "type": "string"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "CTA",
-        "Primary",
-        "Secondary"
-      ],
-      "default": "Primary"
-    },
-    "url": {
-      "type": "string"
-    }
-  }
+	"collectionName": "components_general_buttons",
+	"info": {
+		"displayName": "Button",
+		"icon": "cursor",
+		"description": ""
+	},
+	"options": {},
+	"attributes": {
+		"text": {
+			"type": "string"
+		},
+		"type": {
+			"type": "enumeration",
+			"enum": ["CTA", "Primary", "Secondary"],
+			"default": "Primary"
+		},
+		"url": {
+			"type": "string"
+		}
+	}
 }

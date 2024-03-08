@@ -1,13 +1,13 @@
 {
-  "collectionName": "components_general_lists",
-  "info": {
-    "displayName": "list",
-    "icon": "bulletList"
-  },
-  "options": {},
-  "attributes": {
-    "item": {
-      "type": "string"
-    }
-  }
+	"collectionName": "components_general_lists",
+	"info": {
+		"displayName": "list",
+		"icon": "bulletList"
+	},
+	"options": {},
+	"attributes": {
+		"item": {
+			"type": "string"
+		}
+	}
 }
