@@ -43,6 +43,8 @@ help:
 ## GENERAL
 
 install:
+	@echo "Installing root dependencies"
+	@npm install
 	@echo "Installing web dependencies"
 	@echo "==========================="
 	cd web && . ${NVM_DIR}/nvm.sh && nvm use && npm install
