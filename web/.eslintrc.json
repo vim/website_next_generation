@@ -5,13 +5,14 @@
         "tsconfigRootDir": "__dirname",
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers"],
+    "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers", "prettier"],
     "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "prettier"],
     "rules": {
+        "prettier/prettier": "error",
         "@typescript-eslint/no-unused-vars": "error",
         "@typescript-eslint/no-explicit-any": "error",
         "react/no-unescaped-entities": "off",
-        "no-console": "warn",
+        "no-console": "error",
         "@typescript-eslint/ban-ts-comment": "off",
         "import-helpers/order-imports": [
             "error",
