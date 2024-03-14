@@ -24,12 +24,18 @@ export const metadata: Metadata = {
 
 async function getPageProps() {
 	const query = qs.stringify(params, { addQueryPrefix: true });
-	const respose = await fetch(`${process.env.CMS_API}/menus/1${query}`, {
-		// headers: {
-		//     authorization: `Bearer ${process.env.CMS_TOKEN}`,
-		// },
-	});
-	return (await respose.json()).data.attributes.items.data;
+
+	try {
+		const response = await fetch(`${process.env.CMS_API}/menus/1${query}`, {
+			// headers: {
+			//     authorization: `Bearer ${process.env.CMS_TOKEN}`,
+			// },
+		});
+
+		return (await response.json()).data.attributes.items.data;
+	} catch (error) {
+		return [];
+	}
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -37,9 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 	return (
 		<html lang="en">
-			<body className={inter.className}>
-				<Layout pages={pageProps}>{children}</Layout>
-			</body>
+			<body className={inter.className}>{pageProps && <Layout pages={pageProps}>{children}</Layout>}</body>
 		</html>
 	);
 }
