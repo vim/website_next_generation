@@ -1,0 +1,33 @@
+name: Verify Web
+
+on:
+  push:
+    branches:
+      - main
+      - development
+    paths:
+      - web/**
+  pull_request:
+    branches:
+      - main
+      - development
+    paths:
+      - web/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Install web dependencies
+        run: cd web && npm ci
+      - name: Lint web
+        run: cd web && npm run lint
+      - name: Build web
+        run: cd web && npm run build
