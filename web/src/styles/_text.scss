@@ -1,57 +1,57 @@
 .heading {
-    @apply font-[400] text-secondary;
+	@apply font-[400] text-secondary;
 
-    &::before {
-        content: '>_ ';
-    }
+	&::before {
+		content: ">_ ";
+	}
 
-    @screen sm {
-        @apply mb-5;
-    }
+	@screen sm {
+		@apply mb-5;
+	}
 
-    @screen md {
-        @apply mb-6;
-    }
+	@screen md {
+		@apply mb-6;
+	}
 
-    @screen lg {
-        @apply mb-7;
-    }
+	@screen lg {
+		@apply mb-7;
+	}
 
-    @screen xl {
-        @apply mb-8;
-    }
+	@screen xl {
+		@apply mb-8;
+	}
 }
 
 .h1 {
-    @extend .heading;
-    font-size: clamp(3rem, 5vw, 5rem);
+	@extend .heading;
+	font-size: clamp(3rem, 5vw, 5rem);
 }
 
 .h2 {
-    @extend .heading;
-    font-size: clamp(2rem, 4vw, 4rem);
+	@extend .heading;
+	font-size: clamp(2rem, 4vw, 4rem);
 }
 
 .h3 {
-    @extend .heading;
-    font-size: clamp(1.75rem, 3.5vw, 3rem);
+	@extend .heading;
+	font-size: clamp(1.75rem, 3.5vw, 3rem);
 }
 
 .h4 {
-    @extend .heading;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+	@extend .heading;
+	font-size: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .h5 {
-    @extend .heading;
-    font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+	@extend .heading;
+	font-size: clamp(1.5rem, 2.5vw, 1.75rem);
 }
 
 .h6 {
-    @extend .heading;
-    font-size: clamp(1.5rem, 2vw, 1.25rem);
+	@extend .heading;
+	font-size: clamp(1.5rem, 2vw, 1.25rem);
 }
 
 ul.list li {
-    list-style-type: '> ';
+	list-style-type: "> ";
 }

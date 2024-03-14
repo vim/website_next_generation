@@ -1,22 +1,22 @@
 {
-  "kind": "collectionType",
-  "collectionName": "newsposts",
-  "info": {
-    "singularName": "newspost",
-    "pluralName": "newsposts",
-    "displayName": "Newspost",
-    "description": ""
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
-  "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "text": {
-      "type": "text"
-    }
-  }
+	"kind": "collectionType",
+	"collectionName": "newsposts",
+	"info": {
+		"singularName": "newspost",
+		"pluralName": "newsposts",
+		"displayName": "Newspost",
+		"description": ""
+	},
+	"options": {
+		"draftAndPublish": true
+	},
+	"pluginOptions": {},
+	"attributes": {
+		"title": {
+			"type": "string"
+		},
+		"text": {
+			"type": "text"
+		}
+	}
 }
