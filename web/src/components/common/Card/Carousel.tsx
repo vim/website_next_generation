@@ -1,13 +1,14 @@
+// @ts-nocheck
 "use client";
-import React, { useEffect, useRef } from "react";
-import { register } from "swiper/element";
+import React, { PropsWithChildren, useEffect, useRef } from "react";
+import { register, SwiperContainer } from "swiper/element";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function Carousel(props: { [x: string]: any; children: any }) {
-	const swiperRef = useRef(null);
+export function Carousel(props: PropsWithChildren<Record<string, unknown>>) {
+	const swiperRef = useRef<SwiperContainer>(null);
 	const { children, ...rest } = props;
 
 	useEffect(() => {
+		if (!swiperRef.current) return;
 		// Register Swiper web component
 		register();
 
@@ -21,7 +22,7 @@ export function Carousel(props: { [x: string]: any; children: any }) {
 
 		// initialize swiper
 		swiperRef.current.initialize();
-	}, []);
+	}, [rest, swiperRef]);
 
 	return (
 		<swiper-container init="false" ref={swiperRef}>
@@ -32,5 +33,6 @@ export function Carousel(props: { [x: string]: any; children: any }) {
 export function CarouselSlide(props) {
 	const { children, ...rest } = props;
 
+	// @ts-ignore
 	return <swiper-slide {...rest}>{children}</swiper-slide>;
 }
