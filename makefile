@@ -34,15 +34,21 @@ help:
 	@echo "  check-env:                           compare keys in .env files with .env.example files"
 	@echo "  logs:                                show logs for all containers"
 	@echo "  clean:                               clean up workspace"
+	@echo
 	@echo "  stop:                                stop all containers"
+	@echo "   stop-web:                           stop only web"
+	@echo "   stop-cms:                           stop only cms"
+	@echo "   stop-db:                            stop only db"
 
 ## GENERAL
 
 install:
 	@echo "Installing web dependencies"
-	@cd web && npm install
+	@echo "==========================="
+	cd web && . ${NVM_DIR}/nvm.sh && nvm use && npm install
 	@echo "Installing cms dependencies"
-	@cd cms && npm install
+	@echo "==========================="
+	cd cms && . ${NVM_DIR}/nvm.sh && nvm use && npm install
 
 init-env:
 	test -f .env || cp .env.example .env
@@ -56,6 +62,14 @@ check-env:
 	./scripts/check-env.sh .env.example web/.env
 	./scripts/check-env.sh cms/.env.example cms/.env
 
+# NOTE: Package throws an error when using the CLI to import or export config
+import-config:
+	@echo "Syncing config files to the database"
+	cd cms/ && npm run cs i
+export-config:
+	@echo "Exporting config files from the database"
+	cd cms/ && npm run cs e
+
 logs:
 	$(DC) logs -t -f web db cms
 
@@ -66,17 +80,28 @@ clean:
 stop:
 	$(DC) stop
 
+stop-web:
+	$(DC) stop web
+
+stop-cms:
+	$(DC) stop cms
+
+stop-db:
+	$(DC) stop db
+
 ## DOCKER DEVELOPMENT
 dev: init dev-all
 
 dev-all:
 	$(DC) up -d
+	@echo 'NOTE: Make sure to import new config files to the database. Go to Settings > Config Sync > Interface in the Admin Panel and click on "Import".'
 
 dev-web:
 	$(DC) up -d web
 
 dev-cms:
 	$(DC) up -d cms
+	@echo 'NOTE: Make sure to import new config files to the database. Go to Settings > Config Sync > Interface in the Admin Panel and click on "Import".'
 
 dev-database:
 	$(DC) up -d db
@@ -88,5 +113,5 @@ build: init
 build-web:
 	$(DC) build web
 
-build-backend:
+build-cms:
 	$(DC) build cms
