@@ -34,6 +34,8 @@ help:
 	@echo "  check-env:                           compare keys in .env files with .env.example files"
 	@echo "  logs:                                show logs for all containers"
 	@echo "  clean:                               clean up workspace"
+	@echo "  pretty:                              run prettier write for all services"
+	@echo "  lint:                                run eslint for all services"
 	@echo
 	@echo "  stop:                                stop all containers"
 	@echo "   stop-web:                           stop only web"
@@ -63,14 +65,6 @@ check-env:
 	./scripts/check-env.sh .env.example .env
 	./scripts/check-env.sh .env.example web/.env
 	./scripts/check-env.sh cms/.env.example cms/.env
-
-# NOTE: Package throws an error when using the CLI to import or export config
-import-config:
-	@echo "Syncing config files to the database"
-	cd cms/ && npm run cs i
-export-config:
-	@echo "Exporting config files from the database"
-	cd cms/ && npm run cs e
 
 logs:
 	$(DC) logs -t -f web db cms
@@ -117,3 +111,21 @@ build-web:
 
 build-cms:
 	$(DC) build cms
+
+## Tooling
+lint:
+	cd web && . ${NVM_DIR}/nvm.sh && nvm use && npm run lint:fix
+	cd cms && . ${NVM_DIR}/nvm.sh && nvm use && npm run lint:fix
+
+pretty:
+	cd web && . ${NVM_DIR}/nvm.sh && nvm use && npm run format
+	cd cms && . ${NVM_DIR}/nvm.sh && nvm use && npm run format
+
+# NOTE: Package throws an error when using the CLI to import or export config
+import-config:
+	@echo "Syncing config files to the database"
+	cd cms/ && npm run cs i
+
+export-config:
+	@echo "Exporting config files from the database"
+	cd cms/ && npm run cs e
