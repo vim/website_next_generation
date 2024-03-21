@@ -1,5 +1,5 @@
 .heading {
-	@apply font-semibold text-primary;
+	@apply font-semibold text-primary mb-[32px];
 
 	&::before {
 		content: ">_ ";
@@ -17,11 +17,11 @@
 }
 
 .paragraph {
-	@apply font-normal text-base text-white font-normal;
+	@apply font-normal text-base text-white;
 }
 
 .link {
-	@apply font-normal text-base text-white font-normal;
+	@apply font-normal text-base text-white;
 }
 
 .text- ul.list li {
