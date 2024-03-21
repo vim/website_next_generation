@@ -8,7 +8,7 @@
 	}
 
 	.sidebar {
-		@apply bg-slate-800 text-white w-52 h-screen fixed top-0 left-0 shadow-lg rounded-3xl p-4;
+		@apply bg-gray-5 text-white w-52 fixed top-[1rem] bottom-[1rem] left-[1rem] shadow-lg rounded-3xl p-4;
 	}
 
 	.nav-link {
