@@ -15,7 +15,7 @@ const params = {
 	},
 };
 
-const firaCode = Fira_Code({ subsets: ["latin"], weight: ["400", "600"], display: "swap", variable: "--font-fira" });
+const firaCode = Fira_Code({ subsets: ["latin"], display: "swap", variable: "--font-fira" });
 
 export const metadata: Metadata = {
 	title: "Vim Landing Page",
