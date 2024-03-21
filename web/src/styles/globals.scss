@@ -13,3 +13,7 @@
 	--c-gray-4: #313131;
 	--c-gray-5: #222222;
 }
+
+html {
+	@apply h-full bg-gray-4;
+}
