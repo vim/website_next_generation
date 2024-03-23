@@ -1,21 +1,21 @@
-.heading {
-	@apply font-semibold text-primary mb-8;
+.h1 {
+	@apply font-fira font-semibold text-primary text-xl mb-8;
 }
 
-.h1 {
-	@extend .heading;
+.h2 {
+	@apply font-fira font-semibold text-primary text-lg mb-6;
+}
 
-	@apply text-xl;
+.h1-prefix {
+	@extend .h1;
 
 	&::before {
 		content: ">_ ";
 	}
 }
 
-.h2 {
-	@extend .heading;
-
-	@apply font-fira text-lg;
+.h2-prefix {
+	@extend .h2;
 
 	&::before {
 		content: "> ";
