@@ -7,10 +7,6 @@ on:
       - development
     paths:
       - cms/**
-  pull_request:
-    branches:
-      - main
-      - development
   workflow_dispatch:
 
 jobs:
