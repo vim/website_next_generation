@@ -27,6 +27,19 @@ export default function Home() {
 			<a className="link" href="#">
 				asdf
 			</a>
+			<br></br>
+			<ul className="list">
+				<li>
+					<span>test</span>
+				</li>
+				<li>
+					<span>test</span>
+				</li>
+				<li>
+					<span>test</span>
+				</li>
+			</ul>
+			<button className="btn-primary">test</button>
 		</main>
 	);
 }
