@@ -16,8 +16,8 @@
 	@apply font-fira text-lg;
 }
 
-.paragraph {
-	@apply font-normal text-base text-white;
+p.paragraph {
+	@apply font-fira font-normal text-base text-white;
 }
 
 a.link {
