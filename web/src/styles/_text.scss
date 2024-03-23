@@ -1,5 +1,5 @@
 .heading {
-	@apply font-semibold text-primary mb-[32px];
+	@apply font-semibold text-primary mb-8;
 }
 
 .h1 {
@@ -48,6 +48,14 @@ a.link {
 	}
 }
 
-.text- ul.list li {
-	list-style-type: "> ";
+ul.list {
+	@apply ml-2;
+
+	> li {
+		@apply list-['>'] text-white;
+
+		> span {
+			@apply block text-base ml-2;
+		}
+	}
 }
