@@ -25,6 +25,10 @@ const config: Config = {
 			lg: "clamp(1.75rem, 3vw, 32px)",
 			xl: "clamp(2rem, 4vw, 42px)",
 		},
+		borderRadius: {
+			sm: "15px",
+			DEFAULT: "35px",
+		},
 	},
 	plugins: [],
 };
