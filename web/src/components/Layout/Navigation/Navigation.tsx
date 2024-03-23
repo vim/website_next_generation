@@ -18,16 +18,16 @@ export type Page = {
 
 export default function Navigation({ menu }: NavigationProps) {
 	return (
-		<header className="h-full rounded-[35px] pt-8 bg-gray-5">
+		<header className="h-full rounded pt-8 bg-gray-5">
 			<nav className="flex flex-col items-center h-full">
 				<Link className="mb-8" href="/">
 					<Image src="/vim.svg" width={64} height={64} alt="Vim Logo" />
 				</Link>
 				<ul className="w-full flex flex-col gap-2 px-8">
-					<li className="block rounded-xl py-2 px-4 text-white hover:bg-gray-4 hover:cursor-pointer">
+					<li className="block rounded-sm py-2 px-4 text-white hover:bg-gray-4 hover:cursor-pointer">
 						<Link href="#">Downloads</Link>
 					</li>
-					<li className="block rounded-xl py-2 px-4 text-white hover:bg-gray-4 hover:cursor-pointer">
+					<li className="block rounded-sm py-2 px-4 text-white hover:bg-gray-4 hover:cursor-pointer">
 						<Link href="#">Downloads</Link>
 					</li>
 
