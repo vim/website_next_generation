@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
 	return (
-		<footer className="w-full flex justify-center items-center pb-3">
+		<footer className="w-full flex justify-center items-center">
 			<a className="link" href="/impressum">
 				Impressum
 			</a>
