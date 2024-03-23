@@ -1,19 +1,25 @@
 .heading {
 	@apply font-semibold text-primary mb-[32px];
+}
+
+.h1 {
+	@extend .heading;
+
+	@apply text-xl;
 
 	&::before {
 		content: ">_ ";
 	}
 }
 
-.h1 {
-	@extend .heading;
-	@apply text-xl;
-}
-
 .h2 {
 	@extend .heading;
+
 	@apply font-fira text-lg;
+
+	&::before {
+		content: "> ";
+	}
 }
 
 p.paragraph {
