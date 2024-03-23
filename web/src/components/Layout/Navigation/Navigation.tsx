@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { IconUserCircle } from "@tabler/icons-react";
 
 type NavigationProps = {
