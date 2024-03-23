@@ -20,8 +20,26 @@
 	@apply font-normal text-base text-white;
 }
 
-.link {
-	@apply font-normal text-base text-white;
+a.link {
+	&:link {
+		@apply font-normal font-semibold text-base text-white underline;
+	}
+
+	&:visited {
+		@apply text-gray-1;
+	}
+
+	&:hover {
+		@apply text-primary;
+	}
+
+	&:focus {
+		@apply text-red-600;
+	}
+
+	&:active {
+		@apply text-primary;
+	}
 }
 
 .text- ul.list li {
