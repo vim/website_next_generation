@@ -6,7 +6,7 @@ export default function Footer() {
 			<a className="link" href="/impressum">
 				Impressum
 			</a>
-			<span className="border-x-2 border-primary h-9 mx-[48px] w-0" />
+			<span className="border-x-2 border-primary h-16 mx-[48px] w-0" />
 			<a className="link" href="/copyright">
 				Copyright
 			</a>
