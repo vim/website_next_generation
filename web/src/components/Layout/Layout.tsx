@@ -13,7 +13,7 @@ export default function Layout({ children, pages }: PropsWithChildren<LayoutProp
 				<Navigation menu={pages} />
 			</div>
 			<div className="pt-4">
-				<div className="rounded-[35px] p-12 bg-gray-5">
+				<div className="rounded p-12 bg-gray-5">
 					{children}
 					<Footer />
 				</div>
