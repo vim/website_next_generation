@@ -1,4 +1,5 @@
 import { Fira_Code } from "next/font/google";
+import { getServerSession } from "next-auth";
 import type { Metadata } from "next";
 import "../styles/globals.scss";
 import qs from "qs";
@@ -45,7 +46,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body className={firaCode.className}>
 				{pageProps && (
 					<Layout pages={pageProps}>
 						<SessionProvider session={session}>{children}</SessionProvider>
