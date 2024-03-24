@@ -4,21 +4,34 @@ const config: Config = {
 	content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
 	theme: {
 		extend: {
-			backgroundImage: {
-				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+			fontFamily: {
+				fira: ["var(--font-fira)"],
 			},
 			colors: {
-				primary: "var(--color-primary)",
-				secondary: "var(--color-secondary)",
-				tertiary: "var(--color-tertiary)",
-				"primary-text": "var(--color-primary-text)",
-				"secondary-text": "var(--color-secondary-text)",
-				"accent-text": "var(--color-primary)",
+				primary: "var(--c-primary)",
+				"primary-opacity": "var(--c-primary-opacity)",
 				"gray-1": "var(--c-gray-1)",
 				"gray-2": "var(--c-gray-2)",
 				"gray-3": "var(--c-gray-3)",
+				"gray-4": "var(--c-gray-4)",
+				"gray-5": "var(--c-gray-5)",
 			},
+		},
+		fontSize: {
+			xs: "12px",
+			sm: "clamp(0.5rem, 0.75vw, 16px)",
+			base: "clamp(1rem, 1vw, 18px)",
+			md: "clamp(1.25rem, 2vw, 24px)",
+			lg: "clamp(1.75rem, 3vw, 32px)",
+			xl: "clamp(2rem, 4vw, 42px)",
+		},
+		borderRadius: {
+			none: "0px",
+			xs: "15px",
+			sm: "25px",
+			DEFAULT: "35px",
+			md: "45px",
+			lg: "55px",
 		},
 	},
 	plugins: [],
