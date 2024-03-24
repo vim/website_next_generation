@@ -9,7 +9,7 @@ const config: Config = {
 			},
 			colors: {
 				primary: "var(--c-primary)",
-				"primary-opacity": "rgba(69, 255, 2, 0.15)",
+				"primary-opacity": "var(--c-primary-opacity)",
 				"gray-1": "var(--c-gray-1)",
 				"gray-2": "var(--c-gray-2)",
 				"gray-3": "var(--c-gray-3)",
