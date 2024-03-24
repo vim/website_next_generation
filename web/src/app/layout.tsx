@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "../styles/globals.scss";
 import qs from "qs";
 import Layout from "@/components/Layout/Layout";
+import SessionProvider from "./../components/SessionProvider";
 
 const params = {
 	nested: true,
@@ -40,10 +41,17 @@ async function getPageProps() {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	const pageProps = await getPageProps();
+	const session = await getServerSession();
 
 	return (
 		<html lang="en">
-			<body className={firaCode.className}>{pageProps && <Layout pages={pageProps}>{children}</Layout>}</body>
+			<body className={inter.className}>
+				{pageProps && (
+					<Layout pages={pageProps}>
+						<SessionProvider session={session}>{children}</SessionProvider>
+					</Layout>
+				)}
+			</body>
 		</html>
 	);
 }
