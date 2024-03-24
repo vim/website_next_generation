@@ -1,57 +1,61 @@
-.heading {
-	@apply font-[400] text-secondary;
+.h1 {
+	@apply font-fira font-semibold text-primary text-xl mb-8;
+}
+
+.h2 {
+	@apply font-fira font-semibold text-primary text-lg mb-6;
+}
+
+.h1-prefix {
+	@extend .h1;
 
 	&::before {
 		content: ">_ ";
 	}
+}
 
-	@screen sm {
-		@apply mb-5;
-	}
+.h2-prefix {
+	@extend .h2;
 
-	@screen md {
-		@apply mb-6;
-	}
-
-	@screen lg {
-		@apply mb-7;
-	}
-
-	@screen xl {
-		@apply mb-8;
+	&::before {
+		content: "> ";
 	}
 }
 
-.h1 {
-	@extend .heading;
-	font-size: clamp(3rem, 5vw, 5rem);
+p.paragraph {
+	@apply font-fira font-normal text-base text-white;
 }
 
-.h2 {
-	@extend .heading;
-	font-size: clamp(2rem, 4vw, 4rem);
+a.link {
+	&:link {
+		@apply font-normal font-semibold text-base text-white underline;
+	}
+
+	&:visited {
+		@apply text-gray-1;
+	}
+
+	&:hover {
+		@apply text-primary;
+	}
+
+	&:focus {
+		@apply text-red-600;
+	}
+
+	&:active {
+		@apply text-primary;
+	}
 }
 
-.h3 {
-	@extend .heading;
-	font-size: clamp(1.75rem, 3.5vw, 3rem);
-}
+ul.list {
+	@apply ml-2;
 
-.h4 {
-	@extend .heading;
-	font-size: clamp(1.5rem, 3vw, 2.5rem);
-}
+	> li {
+		@apply list-['>'] text-white;
 
-.h5 {
-	@extend .heading;
-	font-size: clamp(1.5rem, 2.5vw, 1.75rem);
-}
-
-.h6 {
-	@extend .heading;
-	font-size: clamp(1.5rem, 2vw, 1.25rem);
-}
-
-ul.list li {
-	list-style-type: "> ";
+		> span {
+			@apply block text-base ml-2;
+		}
+	}
 }

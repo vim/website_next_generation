@@ -1,10 +1,8 @@
-import { Inter } from "next/font/google";
-import { getServerSession } from "next-auth";
+import { Fira_Code } from "next/font/google";
 import type { Metadata } from "next";
 import "../styles/globals.scss";
 import qs from "qs";
 import Layout from "@/components/Layout/Layout";
-import SessionProvider from "./../components/SessionProvider";
 
 const params = {
 	nested: true,
@@ -17,7 +15,7 @@ const params = {
 	},
 };
 
-const inter = Inter({ subsets: ["latin"] });
+const firaCode = Fira_Code({ subsets: ["latin"], display: "swap", variable: "--font-fira" });
 
 export const metadata: Metadata = {
 	title: "Vim Landing Page",
@@ -42,17 +40,10 @@ async function getPageProps() {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	const pageProps = await getPageProps();
-	const session = await getServerSession();
 
 	return (
 		<html lang="en">
-			<body className={inter.className}>
-				{pageProps && (
-					<Layout pages={pageProps}>
-						<SessionProvider session={session}>{children}</SessionProvider>
-					</Layout>
-				)}
-			</body>
+			<body className={firaCode.className}>{pageProps && <Layout pages={pageProps}>{children}</Layout>}</body>
 		</html>
 	);
 }
