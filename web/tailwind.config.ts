@@ -26,8 +26,12 @@ const config: Config = {
 			xl: "clamp(2rem, 4vw, 42px)",
 		},
 		borderRadius: {
-			sm: "15px",
+			none: "0px",
+			xs: "15px",
+			sm: "25px",
 			DEFAULT: "35px",
+			md: "45px",
+			lg: "55px",
 		},
 	},
 	plugins: [],
