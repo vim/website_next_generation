@@ -1,32 +1,48 @@
-import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth/next";
+import { signIn } from "@/lib/strapi/auth";
 
 const authOptions = {
+	secret: process.env.NEXTAUTH_SECRET,
 	providers: [
-		GithubProvider({
-			clientId: process.env.GITHUB_ID ?? "",
-			clientSecret: process.env.GITHUB_SECRET ?? "",
-		}),
 		CredentialsProvider({
-			name: "Credentials",
+			name: "Username or Email",
 			credentials: {
-				username: { label: "Username", type: "text", placeholder: "jsmith" },
+				email: { label: "Email", type: "text" },
 				password: { label: "Password", type: "password" },
 			},
 			async authorize(credentials) {
-				const res = await fetch("/your/endpoint", {
-					method: "POST",
-					body: JSON.stringify(credentials),
-					headers: { "Content-Type": "application/json" },
-				});
-				const user = await res.json();
+				try {
+					if (credentials?.email == null || credentials.password == null) return null;
+					const strapiResponse = await signIn(credentials.email, credentials.password);
+					console.log("juhu", strapiResponse);
+					if (strapiResponse.error) {
+						console.error(strapiResponse.error.details);
 
-				if (res.ok && user) return user;
-				else return null;
+						return null;
+					}
+					return strapiResponse;
+				} catch {
+					return null;
+				}
 			},
 		}),
 	],
+	callbacks: {
+		session: async ({ session, token }: { session: any; token: any }) => {
+			session.id = token.id;
+			session.jwt = token.jwt;
+			return Promise.resolve(session);
+		},
+		jwt: async ({ token, user }) => {
+			const isSignIn = user ? true : false;
+			if (isSignIn) {
+				token.id = user.id;
+				token.jwt = user.jwt;
+			}
+			return Promise.resolve(token);
+		},
+	},
 };
 
 const handler = NextAuth(authOptions);

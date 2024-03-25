@@ -45,14 +45,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 	const session = await getServerSession();
 
 	return (
-		<html lang="en">
-			<body className={firaCode.className}>
-				{pageProps && (
-					<Layout pages={pageProps}>
-						<SessionProvider session={session}>{children}</SessionProvider>
-					</Layout>
-				)}
-			</body>
-		</html>
+		<SessionProvider session={session}>
+			<html lang="en">
+				<body className={firaCode.className}>{pageProps && <Layout pages={pageProps}>{children}</Layout>}</body>
+			</html>
+		</SessionProvider>
 	);
 }
