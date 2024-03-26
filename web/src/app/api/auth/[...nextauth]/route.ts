@@ -2,6 +2,23 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth/next";
 import { signIn } from "@/lib/strapi/auth";
 
+type StrapiResponse = {
+	jwt: string;
+	user: {
+		id: number;
+		username: string;
+		email: string;
+		provider: string;
+		confirmed: boolean;
+		blocked: boolean;
+		createdAt: string;
+		updatedAt: string;
+	};
+	error?: {
+		details: string[];
+	};
+};
+
 const authOptions = {
 	secret: process.env.NEXTAUTH_SECRET,
 	providers: [
@@ -14,14 +31,19 @@ const authOptions = {
 			async authorize(credentials) {
 				try {
 					if (credentials?.email == null || credentials.password == null) return null;
-					const strapiResponse = await signIn(credentials.email, credentials.password);
-					console.log("juhu", strapiResponse);
-					if (strapiResponse.error) {
-						console.error(strapiResponse.error.details);
 
+					const strapiResponse: StrapiResponse = await signIn(credentials.email, credentials.password);
+
+					if (strapiResponse.error) {
 						return null;
 					}
-					return strapiResponse;
+
+					return {
+						jwt: strapiResponse.jwt,
+						id: String(strapiResponse.user.id),
+						email: strapiResponse.user.email,
+						name: strapiResponse.user.username,
+					};
 				} catch {
 					return null;
 				}
@@ -32,15 +54,15 @@ const authOptions = {
 		session: async ({ session, token }: { session: any; token: any }) => {
 			session.id = token.id;
 			session.jwt = token.jwt;
-			return Promise.resolve(session);
+			return session;
 		},
-		jwt: async ({ token, user }) => {
-			const isSignIn = user ? true : false;
-			if (isSignIn) {
+		jwt: async ({ token, user }: { token: any; user: any }) => {
+			if (user) {
 				token.id = user.id;
 				token.jwt = user.jwt;
+				token.email = user.email;
 			}
-			return Promise.resolve(token);
+			return token;
 		},
 	},
 };

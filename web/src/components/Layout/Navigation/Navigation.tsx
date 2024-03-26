@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { signIn, useSession, signOut } from "next-auth/react";
 import { IconUserCircle } from "@tabler/icons-react";
-import { useEffect } from "react";
 
 type NavigationProps = {
 	menu: Page[];
@@ -45,7 +44,7 @@ export default function Navigation({ menu }: NavigationProps) {
 				</ul>
 
 				<div className="group mt-auto mb-8 hover:text-gray-2">
-					{session && <button onClick={() => signOut()}>Sign out</button>}
+					{session && <button onClick={() => signOut()}>Sign out {JSON.stringify(session.user)}</button>}
 					<Link className="flex items-center gap-2 text-white group-hover:text-gray-2" href="/my-account" onClick={() => signIn()}>
 						<IconUserCircle className="text-white group-hover:text-gray-2" size={40} />
 						My Account
