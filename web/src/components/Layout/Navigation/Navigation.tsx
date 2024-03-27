@@ -24,17 +24,10 @@ export default function Navigation({ menu }: NavigationProps) {
 					<Image src="/vim.svg" width={64} height={64} alt="Vim Logo" />
 				</Link>
 				<ul className="w-full flex flex-col gap-2 px-8">
-					<li className="block rounded-sm py-2 px-4 text-white hover:bg-gray-4 hover:cursor-pointer">
-						<Link href="#">Downloads</Link>
-					</li>
-					<li className="block rounded-sm py-2 px-4 text-white hover:bg-gray-4 hover:cursor-pointer">
-						<Link href="#">Downloads</Link>
-					</li>
-
 					{menu.map(menuItem => {
 						return (
-							<li className="nav-link" key={menuItem.id}>
-								<a href={`/${menuItem.attributes.url}`}>{menuItem.attributes.title}</a>
+							<li className="block rounded-sm py-2 px-4 text-white hover:bg-gray-4 hover:cursor-pointer" key={menuItem.id}>
+								<Link href={`${menuItem.attributes.url}`}>{menuItem.attributes.title}</Link>
 							</li>
 						);
 					})}
