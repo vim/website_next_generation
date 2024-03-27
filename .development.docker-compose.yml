@@ -6,6 +6,7 @@ services:
       - web/.env
     environment:
       - CMS_API=http://cms:1337/api
+      - CMS_TOKEN=${CMS_TOKEN}
     build:
       context: ./web
       dockerfile: Dockerfile.dev
