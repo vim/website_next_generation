@@ -1,13 +1,15 @@
 import React from "react";
 import { getPageContent } from "@/helpers/getPageContent";
-import Card from "@/components/common/Card/Card";
+import { ContentEntry } from "@/components/common/ContentEntry/ContentEntry";
 
 export default async function page({ params }: { params: { slug: string[] } }) {
-	const { page } = await getPageContent(params.slug);
+	const pageContent = await getPageContent(params.slug);
 	return (
 		<div>
-			{/* <h1>{page.pageTitle}</h1> */}
-			<Card data={page}></Card>
+			<h1 className="h1-prefix">{pageContent.attributes.pageTitle}</h1>
+			{pageContent.attributes.contentSection.map(contentEntry => {
+				return <ContentEntry key={contentEntry.id} entry={contentEntry} />;
+			})}
 		</div>
 	);
 }
