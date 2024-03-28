@@ -1,23 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth/next";
 import { signIn } from "@/lib/strapi/auth";
-
-type StrapiResponse = {
-	jwt: string;
-	user: {
-		id: number;
-		username: string;
-		email: string;
-		provider: string;
-		confirmed: boolean;
-		blocked: boolean;
-		createdAt: string;
-		updatedAt: string;
-	};
-	error?: {
-		details: string[];
-	};
-};
+import { StrapiSignInResponse } from "@/lib/types";
 
 const authOptions = {
 	secret: process.env.NEXTAUTH_SECRET,
@@ -29,10 +13,11 @@ const authOptions = {
 				password: { label: "Password", type: "password" },
 			},
 			async authorize(credentials) {
+				console.log("heee");
 				try {
 					if (credentials?.email == null || credentials.password == null) return null;
 
-					const strapiResponse: StrapiResponse = await signIn(credentials.email, credentials.password);
+					const strapiResponse: StrapiSignInResponse = await signIn(credentials.email, credentials.password);
 
 					if (strapiResponse.error) {
 						return null;
@@ -44,7 +29,8 @@ const authOptions = {
 						email: strapiResponse.user.email,
 						name: strapiResponse.user.username,
 					};
-				} catch {
+				} catch (e) {
+					console.log(e);
 					return null;
 				}
 			},
