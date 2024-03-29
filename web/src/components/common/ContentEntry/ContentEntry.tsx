@@ -12,7 +12,14 @@ export async function ContentEntry({ entry }: ContentEntryProps) {
 			case "Card":
 				return <Card content={{ headline: entry.headline, description: entry.description }} />;
 			case "Accordion":
-				return <Carousel />;
+				return (
+					<Carousel>
+						<div>
+							<h2 className="h2">{entry.headline}</h2>
+							<p className="paragraph">{entry.description}</p>
+						</div>
+					</Carousel>
+				);
 			default:
 				return <Plain content={{ headline: entry.headline, description: entry.description }} />;
 		}
