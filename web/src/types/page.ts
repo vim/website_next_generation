@@ -1,4 +1,4 @@
-type contentType = "Plain" | "Card" | "Accordion";
+type ContentType = "Plain" | "Card" | "Accordion";
 type ButtonType = "CTA" | "Primary" | "Secondary";
 
 export type Button = {
@@ -12,7 +12,8 @@ export type Content = {
 	__component: string;
 	headline: string;
 	description?: string;
-	type: contentType;
+	button?: Button;
+	type: ContentType;
 };
 
 type PageAttributes = {
