@@ -33,6 +33,13 @@ const config: Config = {
 			md: "45px",
 			lg: "55px",
 		},
+		dropShadow: {
+			xs: "4px 4px 5px var(--c-gray-3-opacity)",
+			sm: "6px 6px 5px var(--c-gray-3-opacity)",
+			DEFAULT: "8px 8px 5px var(--c-gray-3-opacity)",
+			md: "10px 10px 5px var(--c-gray-3-opacity)",
+			lg: "10px 10px 5px var(--c-gray-3-opacity)",
+		},
 	},
 	plugins: [],
 };
