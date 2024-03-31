@@ -5,7 +5,7 @@ import { CTA } from "@/types/strapi";
 
 export type SectionType = "Plain" | "Card" | "Accordion";
 
-type SectionEntry = {
+export type ContentSectionEntry = {
 	id: number;
 	type: SectionType;
 	headline: string;
@@ -14,21 +14,19 @@ type SectionEntry = {
 };
 
 export type ContentSectionProps = {
-	entries: SectionEntry[];
+	entries: ContentSectionEntry[];
 };
 
 export default async function ContentSection({ entries }: ContentSectionProps) {
-	const renderContent = (entry: SectionEntry) => {
+	const renderSection = (entry: ContentSectionEntry) => {
 		switch (entry.type) {
 			case "Card":
 				return <Card headline={entry.headline} text={entry.description} />;
 			case "Accordion":
 				return (
 					<Carousel>
-						<div>
-							<h2 className="h2">{entry.headline}</h2>
-							<p className="paragraph">{entry.description}</p>
-						</div>
+						<h2 className="h2">{entry.headline}</h2>
+						<p className="paragraph">{entry.description}</p>
 					</Carousel>
 				);
 			default:
@@ -37,10 +35,10 @@ export default async function ContentSection({ entries }: ContentSectionProps) {
 	};
 
 	return (
-		<>
+		<div>
 			{entries.map(entry => {
-				return renderContent(entry);
+				return renderSection(entry);
 			})}
-		</>
+		</div>
 	);
 }
