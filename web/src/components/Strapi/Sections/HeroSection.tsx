@@ -15,14 +15,18 @@ export type HeroSectionProps = {
 
 export default function HeroSection({ headline, cta, listItems }: HeroSectionProps) {
 	return (
-		<div className="mb-8">
+		<div className="flex flex-col justify-end pb-80 h-screen">
 			{headline && <h1 className="h1-prefix">{headline}</h1>}
-			{cta && (
-				<Link className="btn-primary mb-4" href={cta.url}>
-					{cta.text}
-				</Link>
-			)}
-			{listItems && <List items={listItems} />}
+			<div className="flex justify-between">
+				{listItems && <List items={listItems} />}
+				{cta && (
+					<div className="flex">
+						<Link className="btn-primary mt-auto mb-0" href={cta.url}>
+							{cta.text}
+						</Link>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 }
