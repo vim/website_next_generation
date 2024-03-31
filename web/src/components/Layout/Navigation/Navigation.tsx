@@ -26,8 +26,10 @@ export default function Navigation({ menu }: NavigationProps) {
 				<ul className="w-full flex flex-col gap-2 px-8">
 					{menu.map(menuItem => {
 						return (
-							<li className="block rounded-sm py-2 px-4 text-white hover:bg-gray-4 hover:cursor-pointer" key={menuItem.id}>
-								<Link href={`${menuItem.attributes.url}`}>{menuItem.attributes.title}</Link>
+							<li key={menuItem.id}>
+								<Link className="block rounded-sm py-2 px-4 text-white hover:bg-gray-4 hover:cursor-pointer" href={`${menuItem.attributes.url}`}>
+									{menuItem.attributes.title}
+								</Link>
 							</li>
 						);
 					})}
