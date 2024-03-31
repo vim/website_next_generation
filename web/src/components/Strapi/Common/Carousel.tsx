@@ -3,7 +3,7 @@
 import React, { PropsWithChildren, useEffect, useRef } from "react";
 import { register, SwiperContainer } from "swiper/element";
 
-export function Carousel(props: PropsWithChildren<Record<string, unknown>>) {
+export default function Carousel(props: PropsWithChildren<Record<string, unknown>>) {
 	const swiperRef = useRef<SwiperContainer>(null);
 	const { children, ...rest } = props;
 
