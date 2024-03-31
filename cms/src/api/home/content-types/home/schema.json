@@ -4,17 +4,23 @@
   "info": {
     "singularName": "home",
     "pluralName": "homes",
-    "displayName": "home"
+    "displayName": "home",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "Hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.hero-section",
+      "required": true
+    },
     "body": {
       "type": "dynamiczone",
       "components": [
-        "sections.hero-section",
         "sections.news-section",
         "general.button",
         "general.card",
