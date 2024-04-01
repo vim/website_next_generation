@@ -1,13 +1,14 @@
-import { ListItem } from "@/types/strapi";
+import { TextListItem } from "@/types/strapi";
 
 type ListProps = {
-	items: ListItem[];
+	list: TextListItem[];
 };
 
-export default function List({ items }: ListProps) {
+export default async function List({ list }: ListProps) {
+	console.log(list);
 	return (
 		<ul className="list">
-			{items.map(item => {
+			{list.map(item => {
 				return (
 					<li key={item.id}>
 						<span>{item.item}</span>
