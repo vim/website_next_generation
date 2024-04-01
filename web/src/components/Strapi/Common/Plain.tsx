@@ -9,7 +9,7 @@ type PlainProps = {
 
 export default function Plain({ headline, text, cta }: PlainProps) {
 	return (
-		<div>
+		<div className="[&:not(:last-child)]:mb-20">
 			<h2 className="h2-prefix">{headline}</h2>
 			{text && <Markdown className="markdown">{text}</Markdown>}
 			{cta && <p>Here comes the button</p>}

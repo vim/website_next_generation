@@ -11,7 +11,7 @@ type CardProps = {
 
 export default function Card({ headline, text: description, cta }: CardProps) {
 	return (
-		<div className="rounded pt-7 pb-4 px-10 bg-gray-4 drop-shadow">
+		<div className="rounded pt-7 pb-4 px-10 bg-gray-4 drop-shadow [&:not(:last-child)]:mb-20">
 			<h2 className="h2-prefix">{headline}</h2>
 			{description && <Markdown className="markdown">{description}</Markdown>}
 			{cta && <button>Here comes the button</button>}
