@@ -1,7 +1,14 @@
-import { HeroSectionProps } from "@/components/Strapi/Sections/HeroSection";
-import { ContentSectionEntry } from "@/components/Strapi/Sections/ContentSection";
+export type GenericContentEntry = HeroSection | NewsSection | Card | TextListItem | Button;
 
-export type ContentSectionType = "Plain" | "Card" | "Accordion";
+export type Button = {
+	text: string;
+	url: string;
+};
+
+export type TextListItem = {
+	id: number;
+	item: string;
+};
 
 export type SingleType = {
 	data: SingleTypeData;
@@ -18,16 +25,25 @@ export type SingleTypeAttributes = {
 	createdAt: string;
 	updatedAt: string;
 	publishedAt: string;
-	Hero: HeroSectionProps;
-	body: ContentSectionEntry[];
+	Hero: HeroSection;
+	body: GenericContentEntry[];
 };
 
-export type CTA = {
-	text: string;
-	url: string;
+export type HeroSection = {
+	headline?: string;
+	listItems: TextListItem[];
+	cta: Button;
 };
 
-export type ListItem = {
+export type NewsSection = {
+	headline: string;
+	amount: number;
+};
+
+export type Card = {
 	id: number;
-	item: string;
+	__component: "general.card";
+	headline: string;
+	description: string;
+	type: "Plain" | "Card" | "Accordion";
 };
