@@ -1,9 +1,7 @@
 import qs from "qs";
-import { HeroSectionProps } from "@/components/Strapi/Sections/HeroSection";
-import { ContentSectionEntry } from "@/components/Strapi/Sections/ContentSection";
-import { SingleType } from "@/types/strapi";
+import { GenericContentEntry, HeroSection, SingleType } from "@/types/strapi";
 
-export async function getHomePageBody(): Promise<ContentSectionEntry[]> {
+export async function getHomePageBody(): Promise<GenericContentEntry[]> {
 	const response = await fetch(`${process.env.CMS_API}/home?populate=body`);
 
 	if (!response.ok) {
@@ -16,7 +14,7 @@ export async function getHomePageBody(): Promise<ContentSectionEntry[]> {
 	return homePageData.data.attributes.body;
 }
 
-export async function getHomePageHero(): Promise<HeroSectionProps> {
+export async function getHomePageHero(): Promise<HeroSection> {
 	const query = qs.stringify(
 		{
 			populate: ["Hero", "Hero.headline", "Hero.listItems", "Hero.cta"],
@@ -33,5 +31,6 @@ export async function getHomePageHero(): Promise<HeroSectionProps> {
 	}
 
 	const homePageHero = (await response.json()) as SingleType;
+	console.log(homePageHero.data.attributes.Hero);
 	return homePageHero.data.attributes.Hero;
 }
