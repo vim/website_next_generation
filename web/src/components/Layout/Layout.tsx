@@ -13,8 +13,10 @@ export default function Layout({ children, pages }: PropsWithChildren<LayoutProp
 				<Navigation menu={pages} />
 			</div>
 			<div className="pt-4">
-				<div className="relative rounded-t p-12 bg-gray-5">
-					<span className="absolute top-40 right-2 left-2 z-1 text-[500px] text-gray-2 leading-[400px] font-bold">Vim</span>
+				<div className="relative rounded-t py-12 px-20 bg-gray-5">
+					<span className="absolute top-[13rem] right-2 left-2 font-fira text-[12rem] md:hero-bg-text-clamp leading-[400px] text-gray-2 font-bold text-center">
+						Vim
+					</span>
 					{children}
 					<Footer />
 				</div>
