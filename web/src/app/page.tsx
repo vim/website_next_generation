@@ -7,18 +7,20 @@
 //     .then((ok) => ok.json())
 //     .then((res) => console.log(res));
 
+import { renderMatchingComponent } from "@/helpers/renderMatchingComponent";
 import { getHomePageBody, getHomePageHero } from "@/helpers/homepage";
 import HeroSection from "@/components/Strapi/Sections/HeroSection";
-import ContentSection from "@/components/Strapi/Sections/ContentSection";
 
 export default async function Home() {
-	const bodyContent = await getHomePageBody();
 	const heroContent = await getHomePageHero();
+	const bodyContent = await getHomePageBody();
 
 	return (
 		<main>
 			<HeroSection headline={heroContent.headline} listItems={heroContent.listItems} cta={heroContent.cta} />
-			<ContentSection entries={bodyContent} />;
+			{bodyContent.map(contentEntry => {
+				return renderMatchingComponent(contentEntry);
+			})}
 		</main>
 	);
 }
