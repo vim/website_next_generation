@@ -1,5 +1,5 @@
 import qs from "qs";
-import { GenericContentEntry, HeroSection, SingleType } from "@/types/strapi";
+import { NewsCollection, GenericContentEntry, HeroSection, SingleType } from "@/types/strapi";
 
 export async function getHomePageBody(): Promise<GenericContentEntry[]> {
 	const response = await fetch(`${process.env.CMS_API}/home?populate=body`);
@@ -31,6 +31,18 @@ export async function getHomePageHero(): Promise<HeroSection> {
 	}
 
 	const homePageHero = (await response.json()) as SingleType;
-	console.log(homePageHero.data.attributes.Hero);
 	return homePageHero.data.attributes.Hero;
+}
+
+export async function getNews(): Promise<NewsCollection> {
+	const response = await fetch(`${process.env.CMS_API}/newsposts`);
+
+	if (!response.ok) {
+		throw new Error("Fetching news failed");
+	}
+
+	const news = await response.json();
+	news.type = "News";
+
+	return news as NewsCollection;
 }
