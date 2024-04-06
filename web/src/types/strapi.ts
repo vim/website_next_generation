@@ -1,13 +1,20 @@
-export type GenericContentEntry = HeroSection | NewsSection | Card | TextListItem | Button;
+export type GenericContentEntry = HeroSection | NewsSection | CardContent | TextList | Button | GenericCollectionType;
+export type GenericCollectionType = NewsCollection;
 
 export type Button = {
 	text: string;
 	url: string;
+	type: "CTA" | "Primary" | "Secondary";
 };
 
 export type TextListItem = {
 	id: number;
-	item: string;
+	text: string;
+};
+
+export type TextList = {
+	items: TextListItem[];
+	type: "List";
 };
 
 export type SingleType = {
@@ -31,19 +38,49 @@ export type SingleTypeAttributes = {
 
 export type HeroSection = {
 	headline?: string;
-	listItems: TextListItem[];
+	list: TextListItem[];
 	cta: Button;
 };
 
 export type NewsSection = {
 	headline: string;
-	amount: number;
+	newsCount: number;
 };
 
-export type Card = {
+export type CardContent = {
 	id: number;
-	__component: "general.card";
 	headline: string;
 	description: string;
+	button?: Button;
 	type: "Plain" | "Card" | "Accordion";
+};
+
+type CollectionPagination = {
+	page: number;
+	pageSize: number;
+	pageCount: number;
+	total: number;
+};
+
+type CollectionMeta = {
+	pagination: CollectionPagination;
+};
+
+export type NewsCollection = {
+	data: NewsPost[];
+	meta: CollectionMeta;
+	type: "News";
+};
+
+type NewsPostContent = {
+	title: string;
+	text: string;
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+};
+
+export type NewsPost = {
+	id: number;
+	attributes: NewsPostContent;
 };

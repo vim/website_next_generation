@@ -12,6 +12,10 @@
 	@apply font-fira font-semibold text-primary text-md mb-4;
 }
 
+.h4 {
+	@apply font-fira font-semibold text-primary text-base mb-2;
+}
+
 .h1-prefix {
 	@extend .h1;
 
@@ -29,6 +33,14 @@
 }
 
 .h3-prefix {
+	@extend .h3;
+
+	&::before {
+		content: ">_ ";
+	}
+}
+
+.h4-prefix {
 	@extend .h3;
 
 	&::before {

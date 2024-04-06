@@ -1,4 +1,16 @@
 .swiper {
 	//https://github.com/nolimits4web/swiper/issues/3599#issuecomment-1290283431
-	max-width: 100%;
+	@apply max-w-full;
+
+	.swiper-button-prev {
+		@apply text-primary;
+	}
+
+	.swiper-button-next {
+		@apply text-primary;
+	}
+
+	.swiper-button-disabled {
+		@apply text-gray-3;
+	}
 }

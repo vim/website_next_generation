@@ -1,15 +1,6 @@
-// const cmsContentType = 'announcements';
-// fetch(`${process.env.CMS_API}/${cmsContentType}`, {
-//     headers: {
-//         authorization: `Bearer ${process.env.CMS_TOKEN}`,
-//     },
-// })
-//     .then((ok) => ok.json())
-//     .then((res) => console.log(res));
-
-import { renderMatchingComponent } from "@/helpers/renderMatchingComponent";
 import { getHomePageBody, getHomePageHero } from "@/helpers/homepage";
-import HeroSection from "@/components/Strapi/Sections/HeroSection";
+import Hero from "@/components/Strapi/Sections/HeroSection";
+import PageContent from "@/components/Strapi/Sections/Content";
 
 export default async function Home() {
 	const heroContent = await getHomePageHero();
@@ -17,10 +8,8 @@ export default async function Home() {
 
 	return (
 		<main>
-			<HeroSection headline={heroContent.headline} listItems={heroContent.listItems} cta={heroContent.cta} />
-			{bodyContent.map(contentEntry => {
-				return renderMatchingComponent(contentEntry);
-			})}
+			<Hero headline={heroContent.headline} list={heroContent.list} cta={heroContent.cta} />
+			<PageContent entries={bodyContent} />
 		</main>
 	);
 }

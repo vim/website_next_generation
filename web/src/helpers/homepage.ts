@@ -2,14 +2,35 @@ import qs from "qs";
 import { NewsCollection, GenericContentEntry, HeroSection, SingleType } from "@/types/strapi";
 
 export async function getHomePageBody(): Promise<GenericContentEntry[]> {
-	const response = await fetch(`${process.env.CMS_API}/home?populate=body`);
+	const query = qs.stringify(
+		{
+			populate: ["body"],
+		},
+		{
+			encodeValuesOnly: true,
+		}
+	);
+
+	const response = await fetch(`${process.env.CMS_API}/home?${query}`);
 
 	if (!response.ok) {
-		throw new Error("Fetching single type component home failed");
+		throw new Error("Fetching of home content failed");
 	}
 
 	const homePageData = (await response.json()) as SingleType;
-	//console.log("HomePageData", JSON.stringify(homePageData));
+
+	const news = homePageData.data.attributes.body
+		.map((el, i) => {
+			if ("newsCount" in el) return { index: i, newsCount: el.newsCount };
+		})
+		.filter(Boolean);
+
+	for (const newsEntry of news) {
+		if (!newsEntry) break;
+		const fetchedNews = await getNews(newsEntry?.newsCount);
+
+		homePageData.data.attributes.body[newsEntry.index] = fetchedNews;
+	}
 
 	return homePageData.data.attributes.body;
 }
@@ -17,7 +38,7 @@ export async function getHomePageBody(): Promise<GenericContentEntry[]> {
 export async function getHomePageHero(): Promise<HeroSection> {
 	const query = qs.stringify(
 		{
-			populate: ["Hero", "Hero.headline", "Hero.listItems", "Hero.cta"],
+			populate: ["Hero.cta", "Hero.list"],
 		},
 		{
 			encodeValuesOnly: true,
@@ -34,8 +55,19 @@ export async function getHomePageHero(): Promise<HeroSection> {
 	return homePageHero.data.attributes.Hero;
 }
 
-export async function getNews(): Promise<NewsCollection> {
-	const response = await fetch(`${process.env.CMS_API}/newsposts`);
+export async function getNews(count: number = 5): Promise<NewsCollection> {
+	const query = qs.stringify(
+		{
+			pagination: {
+				pageSize: count,
+				page: 1,
+			},
+		},
+		{
+			encodeValuesOnly: true,
+		}
+	);
+	const response = await fetch(`${process.env.CMS_API}/newsposts?${query}`);
 
 	if (!response.ok) {
 		throw new Error("Fetching news failed");

@@ -5,13 +5,12 @@ type ListProps = {
 };
 
 export default async function List({ list }: ListProps) {
-	console.log(list);
 	return (
 		<ul className="list">
 			{list.map(item => {
 				return (
 					<li key={item.id}>
-						<span>{item.item}</span>
+						<span>{item.text}</span>
 					</li>
 				);
 			})}
