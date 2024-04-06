@@ -1,20 +1,20 @@
 "use client";
-import React from "react";
 import Markdown from "react-markdown";
-import { CTA } from "@/types/strapi";
+import { Button } from "@/types/strapi";
 
-type CardProps = {
+type CardContentProps = {
 	headline: string;
-	text?: string;
-	cta?: CTA;
+	text: string;
+	button?: Button;
+	hasShadow?: boolean;
 };
 
-export default function Card({ headline, text: description, cta }: CardProps) {
+export default function Card({ headline, text, button, hasShadow = false }: CardContentProps) {
 	return (
-		<div className="rounded pt-7 pb-4 px-10 bg-gray-4 drop-shadow [&:not(:last-child)]:mb-20">
+		<div className={`${hasShadow && "rounded pt-7 pb-4 px-10 bg-gray-4 drop-shadow"}`}>
 			<h2 className="h2-prefix">{headline}</h2>
-			{description && <Markdown className="markdown">{description}</Markdown>}
-			{cta && <button>Here comes the button</button>}
+			{text && <Markdown className="markdown">{text}</Markdown>}
+			{button && <button>Here comes the button</button>}
 		</div>
 	);
 }
