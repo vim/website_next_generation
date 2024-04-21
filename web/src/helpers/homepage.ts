@@ -2,16 +2,7 @@ import qs from "qs";
 import { NewsCollection, GenericContentEntry, HeroSection, SingleType } from "@/types/strapi";
 
 export async function getHomePageBody(): Promise<GenericContentEntry[]> {
-	const query = qs.stringify(
-		{
-			populate: ["body"],
-		},
-		{
-			encodeValuesOnly: true,
-		}
-	);
-
-	const response = await fetch(`${process.env.CMS_API}/home?${query}`);
+	const response = await fetch(`${process.env.CMS_API}/home?populate=deep`);
 
 	if (!response.ok) {
 		throw new Error("Fetching of home content failed");
