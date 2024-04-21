@@ -18,7 +18,7 @@ export default async function PageContent({ entries }: ContentProps) {
 		} else if (entry.type === "Primary" || entry.type === "CTA" || entry.type === "Secondary") {
 			return (
 				<div className="[&:not(:last-child)]:mb-32">
-					<Link className="btn-primary" href={entry.url}>
+					<Link className="btn-primary block w-fit mr-0 ml-auto" href={entry.url}>
 						{entry.text}
 					</Link>
 				</div>
