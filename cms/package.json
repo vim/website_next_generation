@@ -20,8 +20,9 @@
 		"@strapi/strapi": "4.14.5",
 		"mysql": "2.18.1",
 		"mysql2": "^3.6.2",
-      "strapi-plugin-config-sync": "^1.2.3",
-      "strapi-plugin-menus": "^1.6.1"
+		"strapi-plugin-config-sync": "^1.2.3",
+		"strapi-plugin-menus": "^1.6.1",
+		"strapi-plugin-populate-deep": "^3.0.1"
 	},
 	"devDependencies": {
 		"@babel/eslint-parser": "^7.23.10",
