@@ -17,7 +17,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      CMS_API: ${{ vars.CMS_API }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
