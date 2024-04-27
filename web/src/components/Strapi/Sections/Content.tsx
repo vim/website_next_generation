@@ -8,16 +8,24 @@ type ContentProps = {
 	entries: GenericContentEntry[];
 };
 export default function PageContent({ entries }: ContentProps) {
-	const renderContent = (entry: GenericContentEntry): React.ReactNode => {
+	const renderContent = (uuid: string, entry: GenericContentEntry): React.ReactNode => {
 		if (!("type" in entry)) {
-			return <div className="text-white">sth. went wrong</div>;
+			return (
+				<div key={uuid} className="text-white">
+					sth. went wrong
+				</div>
+			);
 		}
 
 		if (entry.type === "Card" || entry.type === "Plain" || entry.type === "Accordion") {
-			return <div className="[&:not(:last-child)]:mb-32">{renderTextSection(entry)}</div>;
+			return (
+				<div key={uuid} className="[&:not(:last-child)]:mb-32">
+					{renderTextSection(entry)}
+				</div>
+			);
 		} else if (entry.type === "Primary" || entry.type === "CTA" || entry.type === "Secondary") {
 			return (
-				<div className="[&:not(:last-child)]:mb-32">
+				<div key={uuid} className="[&:not(:last-child)]:mb-32">
 					<Link className="btn-primary block w-fit mr-0 ml-auto" href={entry.url}>
 						{entry.text}
 					</Link>
@@ -25,7 +33,7 @@ export default function PageContent({ entries }: ContentProps) {
 			);
 		} else if (entry.type === "News") {
 			return (
-				<div className="[&:not(:last-child)]:mb-32">
+				<div key={uuid} className="[&:not(:last-child)]:mb-32">
 					<NewsSection news={entry} />
 				</div>
 			);
@@ -43,5 +51,5 @@ export default function PageContent({ entries }: ContentProps) {
 		}
 	};
 
-	return <>{entries.map(entry => renderContent(entry))}</>;
+	return <>{entries.map(entry => renderContent(crypto.randomUUID(), entry))}</>;
 }
