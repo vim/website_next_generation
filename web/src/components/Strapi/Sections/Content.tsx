@@ -7,7 +7,7 @@ import { CardContent, GenericContentEntry } from "@/types/strapi";
 type ContentProps = {
 	entries: GenericContentEntry[];
 };
-export default async function PageContent({ entries }: ContentProps) {
+export default function PageContent({ entries }: ContentProps) {
 	const renderContent = (entry: GenericContentEntry): React.ReactNode => {
 		if (!("type" in entry)) {
 			return <div className="text-white">sth. went wrong</div>;

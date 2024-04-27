@@ -2,7 +2,7 @@ import Link from "next/link";
 import { HeroSection } from "@/types/strapi";
 import List from "../Common/List";
 
-export default async function Hero({ headline, cta, list }: HeroSection) {
+export default function Hero({ headline, cta, list }: HeroSection) {
 	return (
 		<div className="flex flex-col justify-end pb-80 h-screen">
 			{headline && <h1 className="h1-prefix">{headline}</h1>}

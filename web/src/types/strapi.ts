@@ -1,6 +1,24 @@
 export type GenericContentEntry = HeroSection | NewsSection | CardContent | TextList | Button | GenericCollectionType;
 export type GenericCollectionType = NewsCollection;
 
+export type HomePageContent = {
+	data: PageData;
+	news: NewsPostContent[];
+};
+
+export type PageData = {
+	id: number;
+	attributes: PageAttributes;
+};
+
+export type PageAttributes = {
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+	Hero: HeroSection;
+	body: GenericContentEntry[];
+};
+
 export type Button = {
 	text: string;
 	url: string;
@@ -43,6 +61,7 @@ export type HeroSection = {
 };
 
 export type NewsSection = {
+	id: number;
 	headline: string;
 	newsCount: number;
 };
@@ -73,6 +92,7 @@ export type NewsCollection = {
 };
 
 type NewsPostContent = {
+	id: number;
 	title: string;
 	text: string;
 	createdAt: string;

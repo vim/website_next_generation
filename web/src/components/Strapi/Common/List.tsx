@@ -4,7 +4,7 @@ type ListProps = {
 	list: TextListItem[];
 };
 
-export default async function List({ list }: ListProps) {
+export default function List({ list }: ListProps) {
 	return (
 		<ul className="list">
 			{list.map(item => {
