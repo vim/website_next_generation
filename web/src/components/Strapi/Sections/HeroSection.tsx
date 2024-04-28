@@ -4,7 +4,7 @@ import List from "../Common/List";
 
 export default function Hero({ headline, cta, list }: HeroSection) {
 	return (
-		<div className="flex flex-col justify-end pb-80 h-screen">
+		<div className="flex flex-col justify-end pb-[48rem] h-screen max-w-7xl">
 			{headline && <h1 className="h1-prefix">{headline}</h1>}
 			<div className="flex justify-between">
 				{list && <List list={list} />}
