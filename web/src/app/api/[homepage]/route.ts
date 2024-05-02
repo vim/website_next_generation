@@ -15,15 +15,19 @@ export async function GET() {
 
 	const homePageData = (await res.json()) as SingleType;
 
+	if (!homePageData.data.attributes) {
+		return Response.json("Homepage contains no Data");
+	}
 	const news = homePageData.data.attributes.body
 		.map((el, i) => {
-			if ("newsCount" in el) return { index: i, newsCount: el.newsCount };
+			if ("newsCount" in el) return { index: i, headline: el.headline, newsCount: el.newsCount };
 		})
 		.filter(Boolean);
 
 	for (const newsEntry of news) {
 		if (!newsEntry) break;
 		const fetchedNews = await getNews(newsEntry?.newsCount);
+		fetchedNews.headline = newsEntry.headline;
 
 		homePageData.data.attributes.body[newsEntry.index] = fetchedNews;
 	}
