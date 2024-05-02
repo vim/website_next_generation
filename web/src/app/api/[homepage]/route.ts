@@ -1,5 +1,5 @@
 import { getNews } from "@/helpers/homepage";
-import { NewsSection, SingleType } from "@/types/strapi";
+import { SingleType } from "@/types/strapi";
 
 export async function GET() {
 	const res = await fetch(`${process.env.CMS_API}/home?populate=deep`, {
@@ -20,15 +20,15 @@ export async function GET() {
 	}
 
 	const newsSections = homePageData.data.attributes.body.map((contentEntry, i) => {
-		if ("newsCount" in contentEntry) return { index: i, news: { headline: contentEntry.headline, newsCount: contentEntry.newsCount } as NewsSection };
+		if ("newsCount" in contentEntry) return { index: i, newsCount: contentEntry.newsCount };
 	});
 
 	for (const newsSectionEntry of newsSections) {
-		if (!newsSectionEntry) break;
-		const fetchedNews = await getNews(newsSectionEntry?.news.newsCount);
-		fetchedNews.headline = newsSectionEntry.news.headline;
+		if (newsSectionEntry) {
+			const fetchedNews = await getNews(newsSectionEntry.newsCount);
 
-		homePageData.data.attributes.body[newsSectionEntry.index] = fetchedNews;
+			homePageData.data.attributes.body[newsSectionEntry.index] = fetchedNews;
+		}
 	}
 
 	return Response.json(homePageData.data.attributes);
