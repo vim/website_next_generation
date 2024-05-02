@@ -1,33 +1,22 @@
 "use client";
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 import Hero from "@/components/Strapi/Sections/HeroSection";
 import PageContent from "@/components/Strapi/Sections/Content";
 import { PageAttributes } from "@/types/strapi";
 
+const fetcher = (url: string) => fetch(url).then(res => res.json() as Promise<PageAttributes>);
+
 export default function Home() {
-	const [pageData, setPageData] = useState<PageAttributes | undefined>(undefined);
-
-	useEffect(() => {
-		const fetchData = async () => {
-			const res = await fetch(`/api/homepage`);
-			if (!res.ok) {
-				throw new Error("fetching homepage hero failed");
-			}
-
-			const data = (await res.json()) as PageAttributes;
-			setPageData(data);
-		};
-
-		fetchData();
-	}, []);
+	// const [pageData, setPageData] = useState<PageAttributes | undefined>(undefined);
+	const { data } = useSWR("/api/homepage", fetcher);
 
 	return (
-		<main className="pb-12">
-			{pageData && (
 		<main className="relative z-1 pb-12">
+			{data && (
 				<>
-					<Hero headline={pageData.Hero.headline} list={pageData.Hero.list} cta={pageData.Hero.cta} />
-					<PageContent entries={pageData.body} />
+					<Hero headline={data.Hero.headline} list={data.Hero.list} cta={data.Hero.cta} />
+					<PageContent entries={data.body} />
 				</>
 			)}
 		</main>
