@@ -1,5 +1,5 @@
 import { getNews } from "@/helpers/homepage";
-import { SingleType } from "@/types/strapi";
+import { NewsSection, SingleType } from "@/types/strapi";
 
 export async function GET() {
 	const res = await fetch(`${process.env.CMS_API}/home?populate=deep`, {
@@ -15,21 +15,20 @@ export async function GET() {
 
 	const homePageData = (await res.json()) as SingleType;
 
-	if (!homePageData.data.attributes) {
-		return Response.json("Homepage contains no Data");
+	if (!homePageData.data.attributes.body) {
+		return Response.json("Homepage contains no data");
 	}
-	const news = homePageData.data.attributes.body
-		.map((el, i) => {
-			if ("newsCount" in el) return { index: i, headline: el.headline, newsCount: el.newsCount };
-		})
-		.filter(Boolean);
 
-	for (const newsEntry of news) {
-		if (!newsEntry) break;
-		const fetchedNews = await getNews(newsEntry?.newsCount);
-		fetchedNews.headline = newsEntry.headline;
+	const newsSections = homePageData.data.attributes.body.map((contentEntry, i) => {
+		if ("newsCount" in contentEntry) return { index: i, news: { headline: contentEntry.headline, newsCount: contentEntry.newsCount } as NewsSection };
+	});
 
-		homePageData.data.attributes.body[newsEntry.index] = fetchedNews;
+	for (const newsSectionEntry of newsSections) {
+		if (!newsSectionEntry) break;
+		const fetchedNews = await getNews(newsSectionEntry?.news.newsCount);
+		fetchedNews.headline = newsSectionEntry.news.headline;
+
+		homePageData.data.attributes.body[newsSectionEntry.index] = fetchedNews;
 	}
 
 	return Response.json(homePageData.data.attributes);
