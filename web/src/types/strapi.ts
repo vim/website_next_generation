@@ -86,6 +86,7 @@ type CollectionMeta = {
 };
 
 export type NewsCollection = {
+	headline: string;
 	data: NewsPost[];
 	meta: CollectionMeta;
 	type: "News";
