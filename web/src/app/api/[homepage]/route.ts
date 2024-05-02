@@ -19,16 +19,14 @@ export async function GET() {
 		return Response.json("Homepage contains no data");
 	}
 
-	const newsSections = homePageData.data.attributes.body.map((contentEntry, i) => {
+	const newsSections = homePageData.data.attributes.body.flatMap((contentEntry, i) => {
 		if ("newsCount" in contentEntry) return { index: i, newsCount: contentEntry.newsCount };
+		else return [];
 	});
 
 	for (const newsSectionEntry of newsSections) {
-		if (newsSectionEntry) {
-			const fetchedNews = await getNews(newsSectionEntry.newsCount);
-
-			homePageData.data.attributes.body[newsSectionEntry.index] = fetchedNews;
-		}
+		const fetchedNews = await getNews(newsSectionEntry.newsCount);
+		homePageData.data.attributes.body[newsSectionEntry.index] = fetchedNews;
 	}
 
 	return Response.json(homePageData.data.attributes);
