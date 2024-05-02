@@ -22,7 +22,7 @@ export default function Home() {
 	}, []);
 
 	return (
-		<main>
+		<main className="pb-12">
 			{pageData && (
 				<>
 					<Hero headline={pageData.Hero.headline} list={pageData.Hero.list} cta={pageData.Hero.cta} />
