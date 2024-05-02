@@ -24,6 +24,7 @@ export default function Home() {
 	return (
 		<main className="pb-12">
 			{pageData && (
+		<main className="relative z-1 pb-12">
 				<>
 					<Hero headline={pageData.Hero.headline} list={pageData.Hero.list} cta={pageData.Hero.cta} />
 					<PageContent entries={pageData.body} />
