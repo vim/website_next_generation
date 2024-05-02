@@ -1,8 +1,9 @@
 {
 	"kind": "singleType",
+	"collectionName": "home",
 	"info": {
 		"singularName": "home",
-		"pluralName": "homes",
+		"pluralName": "home",
 		"displayName": "home",
 		"description": ""
 	},
