@@ -64,8 +64,8 @@ export async function getNews(count: number = 5): Promise<NewsCollection> {
 		throw new Error("Fetching news failed");
 	}
 
-	const news = await response.json();
+	const news = (await response.json()) as NewsCollection;
 	news.type = "News";
 
-	return news as NewsCollection;
+	return news;
 }
