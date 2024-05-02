@@ -23,7 +23,7 @@ export default function NewsSection({ news }: NewsSectionProps) {
 
 	return (
 		<div className="grid rounded py-6 bg-gray-4 drop-shadow">
-			<h3 className="h3-prefix pl-16">News</h3>
+			<h3 className="h3-prefix pl-16">{news.headline}</h3>
 			<Swiper modules={[Navigation, A11y]} slidesPerView={1} navigation onActiveIndexChange={swiper => setCurrentIndex(swiper.realIndex + 1)}>
 				{news.data.map(newsEntry => {
 					return (
