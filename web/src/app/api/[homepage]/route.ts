@@ -20,12 +20,13 @@ export async function GET() {
 	}
 
 	const newsSections = homePageData.data.attributes.body.flatMap((contentEntry, i) => {
-		if ("newsCount" in contentEntry) return { index: i, newsCount: contentEntry.newsCount };
+		if ("newsCount" in contentEntry) return { index: i, newsCount: contentEntry.newsCount, headline: contentEntry.headline };
 		else return [];
 	});
 
 	for (const newsSectionEntry of newsSections) {
 		const fetchedNews = await getNews(newsSectionEntry.newsCount);
+		fetchedNews.headline = newsSectionEntry.headline;
 		homePageData.data.attributes.body[newsSectionEntry.index] = fetchedNews;
 	}
 
