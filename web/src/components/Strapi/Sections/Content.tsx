@@ -3,6 +3,7 @@ import Link from "next/link";
 import NewsSection from "@/components/Strapi/Sections/NewsSection";
 import Card from "@/components/Strapi/Common/Card";
 import { CardContent, GenericContentEntry } from "@/types/strapi";
+import List from "../Common/List";
 
 type ContentProps = {
 	entries: GenericContentEntry[];
@@ -12,31 +13,40 @@ export default function PageContent({ entries }: ContentProps) {
 		if (!("type" in entry)) {
 			return (
 				<div key={uuid} className="text-white">
-					sth. went wrong
+					<p>The fetched component has no defined type. Pls have a look in the strapi backend and change your component definition accordingly</p>
 				</div>
 			);
 		}
 
-		if (entry.type === "Card" || entry.type === "Plain" || entry.type === "Accordion") {
-			return (
-				<div key={uuid} className="[&:not(:last-child)]:mb-32">
-					{renderTextSection(entry)}
-				</div>
-			);
-		} else if (entry.type === "Primary" || entry.type === "CTA" || entry.type === "Secondary") {
-			return (
-				<div key={uuid} className="[&:not(:last-child)]:mb-32">
-					<Link className="btn-primary block w-fit mr-0 ml-auto" href={entry.url}>
+		switch (entry.type) {
+			case "Card":
+			case "Plain":
+			case "Accordion":
+				return (
+					<div key={uuid} className="[&:not(:last-child)]:mb-32">
+						{renderTextSection(entry)}
+					</div>
+				);
+			case "News":
+				return (
+					<div key={uuid} className="[&:not(:last-child)]:mb-32">
+						<NewsSection news={entry} />
+					</div>
+				);
+			case "CTA":
+			case "Primary":
+			case "Secondary":
+				return (
+					<Link key={uuid} className="btn-primary [&:not(:last-child)]:mb-32" href={entry.url}>
 						{entry.text}
 					</Link>
-				</div>
-			);
-		} else if (entry.type === "News") {
-			return (
-				<div key={uuid} className="[&:not(:last-child)]:mb-32">
-					<NewsSection news={entry} />
-				</div>
-			);
+				);
+			case "List":
+				return (
+					<div className="[&:not(:last-child)]:mb-32">
+						<List key={uuid} list={entry.items} />
+					</div>
+				);
 		}
 	};
 
@@ -51,5 +61,5 @@ export default function PageContent({ entries }: ContentProps) {
 		}
 	};
 
-	return <>{entries.map(entry => renderContent(crypto.randomUUID(), entry))}</>;
+	return entries.map(entry => renderContent(crypto.randomUUID(), entry));
 }
