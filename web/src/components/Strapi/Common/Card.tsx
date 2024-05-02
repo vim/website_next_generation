@@ -12,7 +12,7 @@ type CardContentProps = {
 
 export default function Card({ headline, text, button, hasShadow = false }: CardContentProps) {
 	return (
-		<div className={`${hasShadow && "flex flex-col rounded pt-7 pb-4 px-10 bg-gray-4 drop-shadow"}`}>
+		<div className={`${hasShadow ? "flex flex-col rounded pt-7 pb-4 px-10 bg-gray-4 drop-shadow" : ""}`}>
 			<h2 className="h2-prefix">{headline}</h2>
 			{text && <Markdown className="markdown">{text}</Markdown>}
 			{button && (
