@@ -12,17 +12,16 @@ export const signIn = async (email: string, password: string) => {
 				password: password,
 			}),
 		});
-		console.log("signin");
 		return await response.json();
 	} catch (e) {
-		console.log(e);
 		return null;
 	}
 };
 
-export const signUp = async (username: string, email: string, password: string) => {
+export const signUp = async (username: string, email: string, password: string, mode: "internal" | "public" = "public") => {
+	const strapiApiUrl = mode == "public" ? CMS_PUBLIC_API_URL : CMS_INTERNAL_API_URL;
 	try {
-		const response = await fetch(`${CMS_PUBLIC_API_URL}/auth/local/register`, {
+		const response = await fetch(`${strapiApiUrl}/auth/local/register`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -34,12 +33,9 @@ export const signUp = async (username: string, email: string, password: string) 
 				password: password,
 			}),
 		});
-		console.log(response);
 
 		return await response.json();
-	} catch (e) {
-		console.log("something went wrong");
-		console.log(e);
+	} catch {
 		return null;
 	}
 };

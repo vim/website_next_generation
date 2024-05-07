@@ -1,9 +1,9 @@
 "use client";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { signUp } from "@/lib/auth/strapi";
 import { getMailValidation } from "@/helpers/validators";
 import Input from "@/components/Inputs/TextInput";
-import { signUp, signUpApi } from "@/lib/strapi/auth";
-import { signIn, useSession } from "next-auth/react";
 
 type RegistrationFormData = {
 	username: string;
@@ -45,17 +45,12 @@ export default function Registration() {
 					className="flex flex-col items-stretch gap-4"
 					onSubmit={async (e: FormEvent<HTMLFormElement>) => {
 						e.preventDefault();
-						console.log("submit");
-						console.log("err");
 						const registerresp = await signUp(formData.username, formData.email, formData.password);
 						if (registerresp.error) {
-							console.log(registerresp.error.message);
 							setErrorMessage(registerresp.error.message);
 							return;
 						}
-						console.log(registerresp);
-						const res = await signIn("credentials", { email: formData.email, password: formData.password, redirect: false });
-						console.log(res);
+						await signIn("credentials", { email: formData.email, password: formData.password, redirect: false });
 					}}
 				>
 					<Input type="text" label="Username" name="username" id="username" value={formData.username} onChange={handleInputChange} required />
