@@ -10,7 +10,7 @@ export default function Home() {
 	const { data } = useSWR(`/api/${Routes.homepage}`, fetcher);
 
 	return (
-		<main className="relative z-1 pb-12">
+		<main className="pb-12">
 			{data && (
 				<>
 					<Hero headline={data.Hero.headline} list={data.Hero.list} cta={data.Hero.cta} />

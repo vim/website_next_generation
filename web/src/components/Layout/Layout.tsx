@@ -14,9 +14,6 @@ export default function Layout({ children, pages }: PropsWithChildren<LayoutProp
 			</div>
 			<div className="pt-4">
 				<div className="relative rounded-t py-12 px-20 bg-gray-5">
-					<span className="absolute top-[13rem] right-2 left-2 font-fira text-[12rem] md:hero-bg-text-clamp leading-[400px] text-gray-2 font-bold text-center">
-						Vim
-					</span>
 					{children}
 					<Footer />
 				</div>
