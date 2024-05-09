@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 import { IconUserCircle } from "@tabler/icons-react";
 
 type NavigationProps = {
@@ -17,6 +18,8 @@ export type Page = {
 };
 
 export default function Navigation({ menu }: NavigationProps) {
+	const { data: session } = useSession();
+
 	return (
 		<header className="h-full rounded pt-8 bg-gray-5">
 			<nav className="flex flex-col items-center h-full">
@@ -38,7 +41,7 @@ export default function Navigation({ menu }: NavigationProps) {
 				<div className="group mt-auto mb-8 hover:text-gray-2">
 					<Link className="flex items-center gap-2 text-white group-hover:text-gray-2" href="/my-account">
 						<IconUserCircle className="text-white group-hover:text-gray-2" size={40} />
-						My Account
+						{session?.user?.name ? <p>{session.user.name}</p> : <p>My Account</p>}
 					</Link>
 				</div>
 			</nav>

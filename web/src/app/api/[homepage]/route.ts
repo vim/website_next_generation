@@ -5,7 +5,6 @@ export async function GET() {
 	const res = await fetch(`${process.env.CMS_API}/home?populate=deep`, {
 		headers: {
 			"Content-Type": "application/json",
-			"API-Key": process.env.CMS_API_TOKEN!,
 		},
 	});
 
