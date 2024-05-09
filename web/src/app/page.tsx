@@ -2,12 +2,12 @@
 import useSWR from "swr";
 import Hero from "@/components/Strapi/Sections/HeroSection";
 import PageContent from "@/components/Strapi/Sections/Content";
-import { PageAttributes } from "@/types/strapi";
+import { PageAttributes, Routes } from "@/types/strapi";
 
 const fetcher = (url: string) => fetch(url).then(res => res.json() as Promise<PageAttributes>);
 
 export default function Home() {
-	const { data } = useSWR("/api/homepage", fetcher);
+	const { data } = useSWR(`/api/${Routes.homepage}`, fetcher);
 
 	return (
 		<main className="relative z-1 pb-12">

@@ -105,3 +105,7 @@ export type NewsPost = {
 	id: number;
 	attributes: NewsPostContent;
 };
+
+export enum Routes {
+	homepage = "homepage",
+}
