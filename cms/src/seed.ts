@@ -13,7 +13,7 @@ export async function createUserSeed(strapi, amountOfUsers: number){
             blocked: false,
             role: 1,
             old_pw_hash: null,
-            migrated_pw: false
+            migrated_pw: false,
             };
         await strapi.entityService.create("plugin::users-permissions.user", {data: user});
     } 
