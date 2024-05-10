@@ -1,6 +1,7 @@
 {
 	"extends": "@strapi/typescript-utils/tsconfigs/server",
 	"compilerOptions": {
+		"lib": ["ES2015", "dom"],
 		"outDir": "dist",
 		"rootDir": "."
 	},
