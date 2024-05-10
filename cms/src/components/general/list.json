@@ -1,13 +1,16 @@
 {
-	"collectionName": "components_general_lists",
-	"info": {
-		"displayName": "list",
-		"icon": "bulletList"
-	},
-	"options": {},
-	"attributes": {
-		"item": {
-			"type": "string"
-		}
-	}
+  "collectionName": "components_general_lists",
+  "info": {
+    "displayName": "List",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "displayName": "ListItem",
+      "type": "component",
+      "repeatable": true,
+      "component": "general.list-item"
+    }
+  }
 }

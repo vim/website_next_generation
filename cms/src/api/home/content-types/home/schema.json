@@ -1,0 +1,26 @@
+{
+	"kind": "singleType",
+	"collectionName": "home",
+	"info": {
+		"singularName": "home",
+		"pluralName": "homes",
+		"displayName": "home",
+		"description": ""
+	},
+	"options": {
+		"draftAndPublish": true
+	},
+	"pluginOptions": {},
+	"attributes": {
+		"Hero": {
+			"type": "component",
+			"repeatable": false,
+			"component": "sections.hero-section",
+			"required": true
+		},
+		"body": {
+			"type": "dynamiczone",
+			"components": ["sections.news-section", "general.button", "general.card"]
+		}
+	}
+}

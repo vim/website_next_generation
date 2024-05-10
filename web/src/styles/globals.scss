@@ -1,5 +1,6 @@
 @import "./text.scss";
 @import "./btns.scss";
+@import "./swiper";
 @tailwind base;
 @tailwind utilities;
 
@@ -9,6 +10,7 @@
 	--c-gray-1: #c7c7c620;
 	--c-gray-2: #7f7f7f25;
 	--c-gray-3: #cccccc;
+	--c-gray-3-opacity: #cccccc50;
 	--c-gray-4: #313131;
 	--c-gray-5: #222222;
 }

@@ -1,9 +1,19 @@
+@tailwind utilities;
+
 .h1 {
 	@apply font-fira font-semibold text-primary text-xl mb-8;
 }
 
 .h2 {
 	@apply font-fira font-semibold text-primary text-lg mb-6;
+}
+
+.h3 {
+	@apply font-fira font-semibold text-primary text-md mb-4;
+}
+
+.h4 {
+	@apply font-fira font-semibold text-primary text-base mb-2;
 }
 
 .h1-prefix {
@@ -18,7 +28,23 @@
 	@extend .h2;
 
 	&::before {
-		content: "> ";
+		content: ">_ ";
+	}
+}
+
+.h3-prefix {
+	@extend .h3;
+
+	&::before {
+		content: ">_ ";
+	}
+}
+
+.h4-prefix {
+	@extend .h3;
+
+	&::before {
+		content: ">_ ";
 	}
 }
 
@@ -57,5 +83,17 @@ ul.list {
 		> span {
 			@apply block text-base ml-2;
 		}
+	}
+}
+
+.markdown {
+	p {
+		@extend .paragraph;
+	}
+}
+
+@layer utilities {
+	.hero-bg-text-clamp {
+		font-size: clamp(12rem, 36vw, 700px);
 	}
 }
