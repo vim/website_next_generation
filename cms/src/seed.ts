@@ -1,3 +1,4 @@
+/* eslint-disable */
 export async function createUserSeed(strapi: { entityService: { create: (arg0: string, arg1: { data: { username: string; email: string; provider: string; password: string; resetPasswordToken: any; confirmationToken: any; confirmed: boolean; blocked: boolean; role: number; old_pw_hash: any; migrated_pw: boolean; }; }) => any; }; }, amountOfUsers: number){
     console.log("Function called")
     for (let i = 0; i < amountOfUsers; i++) {
