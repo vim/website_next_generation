@@ -1,11 +1,4 @@
-interface Strapi {
-    entityService: {
-      count: (entity: string) => Promise<number>;
-      create: (entity: string, data: { data: any }) => Promise<any>;
-    };
-  }
-
-export async function seedUsers(strapi:Strapi){
+export async function seedUsers(strapi:any){
     const amountOfUsers = 10;
     try {
         const count = await strapi.entityService.count("plugin::users-permissions.user");
