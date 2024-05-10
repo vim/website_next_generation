@@ -1,4 +1,3 @@
-/* eslint-disable */
 export async function createUserSeed(strapi, amountOfUsers: number){
     for (let i = 0; i < amountOfUsers; i++) {
         const user = {
@@ -17,4 +16,3 @@ export async function createUserSeed(strapi, amountOfUsers: number){
         await strapi.entityService.create("plugin::users-permissions.user", {data: user});
     } 
 }
-/* eslint-enable */
