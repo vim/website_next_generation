@@ -1,4 +1,4 @@
-export async function createUserSeed(strapi, amountOfUsers : number){
+export async function createUserSeed(strapi, amountOfUsers: number){
     console.log("Function called")
 
     for (let i = 0; i < amountOfUsers; i++) {
