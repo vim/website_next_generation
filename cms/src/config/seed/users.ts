@@ -1,4 +1,9 @@
-import { Strapi } from "@strapi/strapi";
+interface Strapi {
+    entityService: {
+      count: (entity: string) => Promise<number>;
+      create: (entity: string, data: { data: any }) => Promise<any>;
+    };
+  }
 
 export async function seedUsers(strapi:Strapi){
     const amountOfUsers = 10;

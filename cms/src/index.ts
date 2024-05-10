@@ -1,4 +1,5 @@
 import { seedUsers } from "./config/seed/users";
+import { Strapi } from "@strapi/strapi";
 
 export default {
 	/**
