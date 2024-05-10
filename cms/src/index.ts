@@ -32,16 +32,16 @@ export default {
 						role: 1,
 						old_pw_hash: null,
 						migrated_pw: false,
-						};
-						await strapi.entityService.create("plugin::users-permissions.user", {data: user});
-					}
+					};
+					await strapi.entityService.create("plugin::users-permissions.user", { data: user });
+				}
 				console.log("SUCCESS: Created user on bootstrap");
 			} else {
 				console.log("INFO: User have already been created on bootstrap");
 			}
 		} catch (err) {
 			console.log("ERROR: Could not create user on bootstrap");
-			console.log(err)
+			console.log(err);
 		}
 	},
 };
