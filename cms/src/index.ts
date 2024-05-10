@@ -17,7 +17,7 @@ export default {
 	 * run jobs, or perform some special logic.
 	 */
 	async bootstrap({ strapi }) {
-		if(process.env.NODE_ENV === "development") {
+		if (process.env.NODE_ENV === "development") {
 			seedUsers(strapi);
 		}
 	},
