@@ -1,6 +1,5 @@
 /* eslint-disable */
 export async function createUserSeed(strapi, amountOfUsers: number){
-    console.log("Function called")
     for (let i = 0; i < amountOfUsers; i++) {
         const user = {
             username: `dummyUser${i}`,
@@ -17,5 +16,5 @@ export async function createUserSeed(strapi, amountOfUsers: number){
             };
         await strapi.entityService.create("plugin::users-permissions.user", {data: user});
     } 
-
 }
+/* eslint-enable */
