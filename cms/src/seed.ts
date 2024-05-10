@@ -1,7 +1,7 @@
 export async function createUserSeed(strapi, amountOfUsers : number){
     console.log("Function called")
 
-    for(let i = 0; i < amountOfUsers; i++){
+    for (let i = 0; i < amountOfUsers; i++) {
         const user = {
             username: `dummyUser${i}`,
             email: `dummyUser${i}@example.com`,
