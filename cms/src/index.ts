@@ -1,3 +1,5 @@
+import { createUserSeed } from "./seed";
+
 export default {
 	/**
 	 * An asynchronous register function that runs before
@@ -15,7 +17,6 @@ export default {
 	 * run jobs, or perform some special logic.
 	 */
 	 async bootstrap ({ strapi }){
-		// First, find the role by its name
 		const user = {
 			"username": "dummyUser",
 			"email": "dummyUser@example.com",
@@ -32,7 +33,7 @@ export default {
 		  try{
 			const count = await strapi.entityService.count("plugin::users-permissions.user")
 			if(count ===0){
-				await strapi.entityService.create("plugin::users-permissions.user", {data: user})
+				createUserSeed(strapi, 10)
 				console.log("SUCCESS: Created user on bootstrap")
 			}
 			else{
