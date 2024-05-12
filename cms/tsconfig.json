@@ -1,9 +1,10 @@
 {
 	"extends": "@strapi/typescript-utils/tsconfigs/server",
 	"compilerOptions": {
+		"lib": ["ES2015", "dom"],
 		"outDir": "dist",
 		"rootDir": "."
 	},
-	"include": ["./", "./**/*.ts", "./**/*.js", "src/**/*.json"],
+	"include": ["./", "./**/*.ts", "src/**/*.json"],
 	"exclude": ["node_modules/", "build/", "dist/", ".cache/", ".tmp/", "src/admin/", "**/*.test.*", "src/plugins/**"]
 }
