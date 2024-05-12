@@ -1,4 +1,4 @@
-export async function seedUsers(strapi:any){
+export async function seedUsers(strapi: any){
     const amountOfUsers = 10;
     try {
         const count = await strapi.entityService.count("plugin::users-permissions.user");
