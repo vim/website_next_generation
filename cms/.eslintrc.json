@@ -1,30 +1,24 @@
 {
-	"parser": "@babel/eslint-parser",
-	"plugins": ["prettier", "unused-imports"],
-	"ignorePatterns": ["node_modules/", "build/", "dist/", "public/"],
-	"parserOptions": {
-		"requireConfigFile": false,
-		"babelOptions": {
-			"presets": ["@babel/preset-react"]
-		},
-		"ecmaFeatures": {
-			"experimentalObjectRestSpread": true,
-			"jsx": false
-		},
-		"sourceType": "module"
-	},
-	"extends": ["eslint:recommended", "prettier"],
-	"env": {
-		"commonjs": true,
-		"es6": true,
-		"node": true,
-		"browser": false
-	},
-	"globals": {
-		"strapi": true
-	},
-	"rules": {
-		"prettier/prettier": "error",
-		"no-console": 0
-	}
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "prettier", "unused-imports"],
+    "ignorePatterns": ["node_modules/", "build/", "dist/", "public/"],
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "node": true,
+        "browser": false
+    },
+    "globals": {
+        "strapi": true
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "no-console": 0
+    }
 }
