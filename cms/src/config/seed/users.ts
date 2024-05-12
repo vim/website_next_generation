@@ -1,4 +1,3 @@
-// Define a type for the strapi parameter
 interface Strapi {
 	entityService: {
 		count: (query: string) => Promise<number>;
@@ -6,7 +5,6 @@ interface Strapi {
 	};
 }
 
-// Define a type for the user object
 interface User {
 	username: string;
 	email: string;
