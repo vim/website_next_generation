@@ -3,8 +3,8 @@
     "plugins": ["@typescript-eslint", "prettier", "unused-imports"],
     "ignorePatterns": ["node_modules/", "build/", "dist/", "public/"],
     "parserOptions": {
-        "project": "./tsconfig.json",
-        "ecmaVersion": 2018,
+        "project": "**/tsconfig.json",
+		"tsconfigRootDir": "__dirname",
         "sourceType": "module"
     },
     "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
