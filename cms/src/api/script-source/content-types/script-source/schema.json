@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "script_sources",
+  "info": {
+    "singularName": "script-source",
+    "pluralName": "script-sources",
+    "displayName": "Script Source",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "script_source_id": {
+      "type": "integer"
+    },
+    "mime_type": {
+      "type": "string"
+    },
+    "script": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::script.script",
+      "inversedBy": "script_sources"
+    },
+    "vim_version": {
+      "type": "string"
+    },
+    "script_version": {
+      "type": "string"
+    },
+    "version_comment": {
+      "type": "text"
+    },
+    "src": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "created_by_user": {
+      "type": "integer"
+    },
+    "creation_date": {
+      "type": "datetime"
+    },
+    "package": {
+      "type": "text"
+    }
+  }
+}
