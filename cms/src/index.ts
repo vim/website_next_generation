@@ -1,3 +1,4 @@
+import { seedScripts } from "./config/seed/scripts";
 import { seedUsers } from "./config/seed/users";
 
 export default {
@@ -19,6 +20,7 @@ export default {
 	async bootstrap({ strapi }) {
 		if (process.env.NODE_ENV === "development") {
 			seedUsers(strapi);
+			seedScripts(strapi);
 		}
 	},
 };

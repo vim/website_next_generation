@@ -21,7 +21,7 @@ export async function seedUsers(strapi: Strapi) {
 				};
 				await strapi.entityService.create("plugin::users-permissions.user", { data: user });
 			}
-			console.log("SUCCESS: Created user on bootstrap");
+			console.log("SUCCESS: Created users on bootstrap");
 		} else {
 			console.log("INFO: User have already been created on bootstrap");
 		}
