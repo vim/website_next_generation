@@ -1,3 +1,4 @@
+import { seedScirptsSource } from "./config/seed/scipts-source";
 import { seedScripts } from "./config/seed/scripts";
 import { seedUsers } from "./config/seed/users";
 
@@ -21,6 +22,7 @@ export default {
 		if (process.env.NODE_ENV === "development") {
 			seedUsers(strapi);
 			seedScripts(strapi);
+			seedScirptsSource(strapi);
 		}
 	},
 };

@@ -5,6 +5,7 @@ export async function seedScripts(strapi: Strapi) {
 		const count = await strapi.entityService.count("api::script.script");
 		if (count === 0) {
 			const script = {
+				id: 1,
 				script_name: "SampleScript",
 				script_type: "Automation",
 				summary: "A sample script for automating routine tasks.",
@@ -24,6 +25,6 @@ export async function seedScripts(strapi: Strapi) {
 		}
 	} catch (error) {
 		console.log("ERROR: Could not create scripts on bootstrap");
-		console.log(error);
+		console.log(error.details);
 	}
 }
