@@ -7,6 +7,7 @@ export async function seedUsers(strapi: Strapi) {
 		if (count === 0) {
 			for (let i = 0; i < amountOfUsers; i++) {
 				const user: User = {
+					id: i + 1,
 					username: `dummyUser${i}`,
 					email: `dummyUser${i}@example.com`,
 					provider: "local",

@@ -20,9 +20,9 @@ export default {
 	 */
 	async bootstrap({ strapi }) {
 		if (process.env.NODE_ENV === "development") {
-			seedUsers(strapi);
-			seedScripts(strapi);
-			seedScirptsSource(strapi);
+			await seedUsers(strapi);
+			await seedScripts(strapi);
+			await seedScirptsSource(strapi);
 		}
 	},
 };

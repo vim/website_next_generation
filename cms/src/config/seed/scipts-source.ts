@@ -21,6 +21,7 @@ export async function seedScirptsSource(strapi: Strapi) {
 					await strapi.entityService.create("api::script-source.script-source", { data: scriptSource });
 				}
 			}
+			console.log("SUCCESS: Created script sources on bootstrap");
 		} else {
 			console.log("INFO: Script source have already been created on bootstrap");
 		}

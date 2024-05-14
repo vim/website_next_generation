@@ -39,9 +39,6 @@
     "last_update_date": {
       "type": "datetime"
     },
-    "created_by_user": {
-      "type": "integer"
-    },
     "creation_date": {
       "type": "datetime"
     },
@@ -50,6 +47,12 @@
       "relation": "oneToMany",
       "target": "api::script-source.script-source",
       "mappedBy": "script"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "scripts"
     }
   }
 }

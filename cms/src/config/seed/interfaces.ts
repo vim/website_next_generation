@@ -8,6 +8,7 @@ export interface Strapi {
 }
 
 export interface User {
+	id: number;
 	username: string;
 	email: string;
 	provider: string;
