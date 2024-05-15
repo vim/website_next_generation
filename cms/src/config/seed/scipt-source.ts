@@ -1,4 +1,4 @@
-import { Strapi } from "./interfaces";
+import { ScriptSource, Strapi } from "./interfaces";
 
 export async function seedScirptsSource(strapi: Strapi) {
 	try {
@@ -8,7 +8,7 @@ export async function seedScirptsSource(strapi: Strapi) {
 		if (countOfScriptSource === 0) {
 			for (let i_script = 0; i_script < countOfScript; i_script++) {
 				for (let i_script_source = 0; i_script_source < amountOfSourcePerScript; i_script_source++) {
-					const scriptSource = {
+					const scriptSource: ScriptSource = {
 						script: i_script + 1,
 						mime_type: "text/x-python",
 						vim_version: "8.2",

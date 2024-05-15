@@ -1,4 +1,4 @@
-import { Strapi } from "./interfaces";
+import { Script, Strapi } from "./interfaces";
 
 export async function seedScripts(strapi: Strapi) {
 	try {
@@ -6,7 +6,7 @@ export async function seedScripts(strapi: Strapi) {
 		const amountOfScripts = 5;
 		if (count === 0) {
 			for (let i = 0; i < amountOfScripts; i++) {
-				const script = {
+				const script: Script = {
 					id: i + 1,
 					script_name: "SampleScript",
 					script_type: "Automation",
