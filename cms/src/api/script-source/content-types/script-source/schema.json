@@ -34,21 +34,24 @@
       "type": "text"
     },
     "src": {
-      "allowedTypes": [
-        "files"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
-    },
-    "created_by_user": {
-      "type": "integer"
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
     },
     "creation_date": {
       "type": "datetime"
     },
     "package": {
       "type": "text"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "script_sources"
     }
   }
 }
