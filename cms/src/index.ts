@@ -1,6 +1,7 @@
-import { seedScirptsSource } from "./config/seed/scipts-source";
+import { seedScirptsSource } from "./config/seed/scipt-source";
 import { seedScripts } from "./config/seed/scripts";
 import { seedUsers } from "./config/seed/users";
+import { seedScriptRatings } from "./config/seed/script-ratings";
 
 export default {
 	/**
@@ -23,6 +24,7 @@ export default {
 			await seedUsers(strapi);
 			await seedScripts(strapi);
 			await seedScirptsSource(strapi);
+			await seedScriptRatings(strapi);
 		}
 	},
 };

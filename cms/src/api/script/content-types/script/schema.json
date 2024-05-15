@@ -53,6 +53,12 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "scripts"
+    },
+    "script_ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::script-rating.script-rating",
+      "mappedBy": "script"
     }
   }
 }
