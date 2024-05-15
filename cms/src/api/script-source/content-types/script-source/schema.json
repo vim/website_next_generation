@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "script_source_id": {
-      "type": "integer"
-    },
     "mime_type": {
       "type": "string"
     },
