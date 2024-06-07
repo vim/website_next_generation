@@ -31,3 +31,4 @@ jobs:
         script: |
           whoami
           ls -al
+          touch newfile
