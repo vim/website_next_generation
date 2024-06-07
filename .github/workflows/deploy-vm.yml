@@ -27,7 +27,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         source: "./docker-compose.dev.yml,./.env"
-        target: "~/.deploy/${{ github.event.repository.name }}/"
+        target: "~/${{ github.event.repository.name }}/"
 
     - name: pull & start container images
       uses: appleboy/ssh-action@v1.0.3
@@ -36,7 +36,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          cd "~/.deploy/${{ github.event.repository.name }}/"
+          cd "~/${{ github.event.repository.name }}/"
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{github.actor}} --password-stdin
           docker compose -f docker-compose.dev.yml pull
           docker compose -f docker-compose.dev.yml up
