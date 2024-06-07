@@ -1,6 +1,6 @@
 .PHONY: clean build run logsmake
 
-DC=docker compose -f .development.docker-compose.yml
+DC=docker compose -f docker-compose.local.yml
 
 default: help
 init: init-env check-env install
