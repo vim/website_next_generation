@@ -6,8 +6,6 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile.prod
-    env_file:
-      - ./web/.env
     environment:
       - CMS_API=http://cms:1337/api
     ports:
@@ -38,7 +36,6 @@ services:
     container_name: strapi
     image: ghcr.io/vim/website_next_generation/cms:development
     restart: unless-stopped
-    env_file: ./cms/.env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_HOST: db
