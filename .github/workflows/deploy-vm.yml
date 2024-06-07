@@ -29,4 +29,4 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login ghcr.io -u ${{github.actor}} --password-stdin
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{github.actor}} --password-stdin
