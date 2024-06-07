@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - development
-      - feature/deploy-vm # TBD
+      - feature/deployment-vm # TBD
 
 jobs:
   deploy:
