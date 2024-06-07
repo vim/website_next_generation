@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - development
       - feature/deploy-vm # TBD
 
 jobs:
