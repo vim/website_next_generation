@@ -1,11 +1,16 @@
 name: Deploy Docker Images
 
 on:
-  push:
+  pull_request:
     branches:
       - main
       - development
       - feature/deployment-vm # TODO: remove temporary branch for testing
+    paths:
+      - web/**
+      - cms/**
+      - '.env'
+      - '**compose.**.yml'
 
 jobs:
   deploy:
