@@ -28,7 +28,7 @@ services:
       - vim-cms-data:/var/lib/mysql
       - ./db/docker-scripts:/docker-entrypoint-initdb.d
     ports:
-      - 3311:3306
+      - ${DATABASE_PORT}:3306
     networks:
       - vim_network
 
