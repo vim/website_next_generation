@@ -1,11 +1,11 @@
-name: Deploy Docker Image
+name: Deploy Docker Images
 
 on:
   push:
     branches:
       - main
       - development
-      - feature/deployment-vm # TBD
+      - feature/deployment-vm # TODO: remove temporary branch for testing
 
 jobs:
   deploy:
