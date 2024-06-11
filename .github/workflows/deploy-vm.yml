@@ -46,5 +46,5 @@ jobs:
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{github.actor}} --password-stdin
           docker compose -f docker-compose.dev.yml pull
           docker compose -f docker-compose.dev.yml down
-          docker compose -f docker-compose.dev.yml up -d --wait
+          docker compose -f docker-compose.dev.yml up -d --wait --no-build --force-recreate
           docker compose -f docker-compose.dev.yml logs -t -n 50
