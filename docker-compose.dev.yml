@@ -7,8 +7,6 @@ services:
       - CMS_API=http://cms:1337/api
     ports:
       - 3000:3000
-    volumes:
-      - ./web/src:/app/src
     networks:
       - vim_network
 
@@ -44,12 +42,6 @@ services:
       ADMIN_JWT_SECRET: ${CMS_ADMIN_JWT_SECRET}
       APP_KEYS: ${CMS_APP_KEYS}
       NODE_ENV: ${NODE_ENV}
-    volumes:
-      - ./cms/config:/opt/app/config
-      - ./cms/src:/opt/app/src
-      - ./cms/package.json:/opt/package.json
-      - ./cms/.env:/opt/app/.env
-      - ./cms/public/uploads:/opt/app/public/uploads
     ports:
       - 1337:1337
     networks:
