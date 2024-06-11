@@ -5,6 +5,7 @@ services:
     image: ghcr.io/vim/website_next_generation/web:development
     environment:
       - CMS_API=http://cms:1337/api
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
     ports:
       - 3000:3000
     networks:
