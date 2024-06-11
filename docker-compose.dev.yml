@@ -3,9 +3,6 @@ services:
   web:
     container_name: web
     image: ghcr.io/vim/website_next_generation/web:development
-    build:
-      context: ./web
-      dockerfile: Dockerfile.prod
     environment:
       - CMS_API=http://cms:1337/api
     ports:
