@@ -2,7 +2,7 @@ version: "3"
 services:
   web:
     container_name: web
-    image: ghcr.io/vim/website_next_generation/web:development
+    image: ghcr.io/vim/website_next_generation/web:${TAG:-development}
     environment:
       - CMS_API=http://cms:1337/api
       - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
@@ -30,7 +30,7 @@ services:
 
   cms:
     container_name: strapi
-    image: ghcr.io/vim/website_next_generation/cms:development
+    image: ghcr.io/vim/website_next_generation/cms:${TAG:-development}
     restart: unless-stopped
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
