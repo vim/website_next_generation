@@ -5,8 +5,7 @@ on:
     branches:
       - main
       - development
-    paths:
-      - cms/**
+      - feature/deployment-vm
   workflow_dispatch:
 
 jobs:
