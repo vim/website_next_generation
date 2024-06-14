@@ -44,7 +44,7 @@ jobs:
         script: |
           cd ~/${{ github.event.repository.name }}/
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{github.actor}} --password-stdin
-          TAG=feature-deployment-vm docker compose -f docker-compose.dev.yml pull
-          TAG=feature-deployment-vm docker compose -f docker-compose.dev.yml down
-          TAG=feature-deployment-vm docker compose -f docker-compose.dev.yml up -d --wait --no-build --force-recreate
-          TAG=feature-deployment-vm docker compose -f docker-compose.dev.yml logs -t -n 50
+          docker compose -f docker-compose.dev.yml pull
+          docker compose -f docker-compose.dev.yml down
+          docker compose -f docker-compose.dev.yml up -d --wait --no-build --force-recreate
+          docker compose -f docker-compose.dev.yml logs -t -n 50
