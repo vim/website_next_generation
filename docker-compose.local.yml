@@ -51,6 +51,8 @@ services:
       ADMIN_JWT_SECRET: ${CMS_ADMIN_JWT_SECRET}
       APP_KEYS: ${CMS_APP_KEYS}
       NODE_ENV: ${NODE_ENV}
+      STRAPI_DISABLE_UPDATE_NOTIFICATION: false
+      STRAPI_TELEMETRY_DISABLED: true
     volumes:
       - ./cms/config:/opt/app/config
       - ./cms/src:/opt/app/src
