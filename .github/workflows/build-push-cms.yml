@@ -45,4 +45,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: CMS_URL=${{secrets.CMS_URL}}
+          build-args: CMS_URL=${{env.CMS_URL}}
