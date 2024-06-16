@@ -6,7 +6,6 @@ on:
       - main
       - development
       - feature/deployment-vm
-  workflow_dispatch:
 
 jobs:
   push_to_registries:

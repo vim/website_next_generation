@@ -1,7 +1,6 @@
 name: Deploy Docker Images
 
 on:
-  workflow_dispatch:
   workflow_run:
     workflows:
       - "Build and Push Web Docker Image"
