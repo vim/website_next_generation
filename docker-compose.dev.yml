@@ -39,7 +39,7 @@ services:
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_SSL: false
-      URL: ${CMS_URL}
+      CMS_URL: ${CMS_URL}
       HOST: ${CMS_HOST}
       PORT: ${CMS_PORT}
       APP_KEYS: ${CMS_APP_KEYS}
