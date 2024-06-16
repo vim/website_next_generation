@@ -1,16 +1,16 @@
 name: Deploy Docker Images
 
 on:
-  pull_request:
+  workflow_run:
+    workflows:
+      - "Build and Push Web Docker Image"
+      - "Build and Push CMS Docker Image"
+    types:
+      - completed
     branches:
       - main
       - development
       - feature/deployment-vm # TODO: remove temporary branch for testing
-    paths:
-      - web/**
-      - cms/**
-      - '.env'
-      - '**compose.**.yml'
 
 jobs:
   deploy:
