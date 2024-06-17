@@ -7,7 +7,6 @@ on:
       - Build and Push CMS Docker Image
     branches:
       - development
-      - feature/deployment-vm # TODO: remove temporary branch for testing
     types:
       - completed
 
