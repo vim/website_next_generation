@@ -13,7 +13,7 @@
     "@commitlint/config-conventional": "^19.1.0",
     "@types/node": "^20.12.11",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2"
+    "lint-staged": "^15.2.7"
   },
   "dependencies": {
     "@strapi/strapi": "^4.24.2"
