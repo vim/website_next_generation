@@ -17,12 +17,24 @@ updates:
     target-branch: "development"
     schedule:
       interval: "weekly"
+    groups:
+      non-major-deps:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "npm"
     directory: "/web"
     target-branch: "development"
     schedule:
       interval: "weekly"
+    groups:
+      non-major-deps:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
 
   # ===== DOCKER =====
   - package-ecosystem: "docker"
