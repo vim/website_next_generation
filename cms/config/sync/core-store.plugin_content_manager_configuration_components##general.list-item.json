@@ -1,14 +1,14 @@
 {
-	"key": "plugin_content_manager_configuration_components::general.list",
+	"key": "plugin_content_manager_configuration_components::general.list-item",
 	"value": {
-		"uid": "general.list",
+		"uid": "general.list-item",
 		"settings": {
 			"bulkable": true,
 			"filterable": true,
 			"searchable": true,
 			"pageSize": 10,
-			"mainField": "id",
-			"defaultSortBy": "id",
+			"mainField": "text",
+			"defaultSortBy": "text",
 			"defaultSortOrder": "ASC"
 		},
 		"metadatas": {
@@ -20,28 +20,28 @@
 					"sortable": false
 				}
 			},
-			"items": {
+			"text": {
 				"edit": {
-					"label": "items",
+					"label": "text",
 					"description": "",
 					"placeholder": "",
 					"visible": true,
 					"editable": true
 				},
 				"list": {
-					"label": "items",
-					"searchable": false,
-					"sortable": false
+					"label": "text",
+					"searchable": true,
+					"sortable": true
 				}
 			}
 		},
 		"layouts": {
-			"list": ["id", "items"],
+			"list": ["id", "text"],
 			"edit": [
 				[
 					{
-						"name": "items",
-						"size": 12
+						"name": "text",
+						"size": 6
 					}
 				]
 			]
