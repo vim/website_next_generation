@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - development
+      - 'feature/**'
 
 jobs:
   push_to_registries:
