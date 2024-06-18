@@ -1,6 +1,11 @@
 name: Deploy Docker Images
 
 on:
+  pull_request:
+    branches:
+      - main
+      - development
+      - feature/deployment-vm # TODO: remove temporary branch for testing
   workflow_run:
     workflows:
       - Build and Push Web Docker Image
