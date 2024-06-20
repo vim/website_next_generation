@@ -1,5 +1,6 @@
 import React from "react";
 import { getPageContent } from "@/helpers/getPageContent";
+import { notFound } from "next/navigation";
 
 export default async function page({ params }: { params: { slug: string[] } }) {
 	try {
@@ -10,10 +11,6 @@ export default async function page({ params }: { params: { slug: string[] } }) {
 			</div>
 		);
 	} catch (e) {
-		return (
-			<div>
-				<p>No content defined in CMS.</p>
-			</div>
-		);
+		notFound();
 	}
 }
