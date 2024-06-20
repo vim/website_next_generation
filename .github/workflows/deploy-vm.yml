@@ -1,0 +1,52 @@
+name: Deploy Docker Images
+
+on:
+  pull_request:
+    branches:
+      - main
+      - development
+  workflow_run:
+    workflows:
+      - Build and Push Web Docker Image
+      - Build and Push CMS Docker Image
+    branches:
+      - development
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: setup environment file
+      run: |
+        test -f .env || cp .env.example .env
+
+    - name: copy files to server
+      uses: appleboy/scp-action@v0.1.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        source: "./docker-compose.dev.yml,./.env"
+        target: "~/${{ github.event.repository.name }}/"
+
+    - name: pull & start container images
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script_stop: true
+        script: |
+          cd ~/${{ github.event.repository.name }}/
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{github.actor}} --password-stdin
+          docker compose -f docker-compose.dev.yml pull
+          docker compose -f docker-compose.dev.yml down
+          docker compose -f docker-compose.dev.yml up -d --wait --no-build --force-recreate
+          docker compose -f docker-compose.dev.yml logs -t -n 50

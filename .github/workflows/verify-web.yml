@@ -5,12 +5,14 @@ on:
     branches:
       - main
       - development
+      - 'feature/**'
     paths:
       - web/**
   pull_request:
     branches:
       - main
       - development
+      - 'feature/**'
     paths:
       - web/**
 

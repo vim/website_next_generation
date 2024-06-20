@@ -11,7 +11,8 @@ export default ({ env }) => ({
 		},
 	},
 	flags: {
-		nps: env.bool("FLAG_NPS", true),
+		nps: env.bool("FLAG_NPS", false),
+		promoteEE: env.bool("FLAG_EE", false),
 	},
 	watchIgnoreFiles: ["**/config/sync/**"],
 });

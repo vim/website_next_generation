@@ -5,9 +5,9 @@ on:
     branches:
       - main
       - development
+      - 'feature/**'
     paths:
       - web/**
-  workflow_dispatch:
 
 jobs:
   push_to_registries:
@@ -19,14 +19,14 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
- 
+
       - name: Log in to the Container registry
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
- 
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@f7b4ed12385588c3f9bc252f0a2b520d83b52d48
@@ -37,7 +37,7 @@ jobs:
             type=semver,pattern={{version}}
           images: |
             ghcr.io/${{ github.repository }}/web
- 
+
       - name: Build and push Docker images
         uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25
         with:
