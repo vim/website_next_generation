@@ -1,10 +1,10 @@
 "use client";
+import { redirect } from "next/navigation";
+import Error from "next/error";
 import useSWR from "swr";
 import Hero from "@/components/Strapi/Sections/HeroSection";
 import PageContent from "@/components/Strapi/Sections/Content";
 import { PageAttributes, Routes } from "@/types/strapi";
-import Error from "next/error";
-import { redirect } from "next/navigation";
 
 const fetcher = (url: string) => fetch(url).then(res => res.json() as Promise<PageAttributes>);
 

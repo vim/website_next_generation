@@ -1,6 +1,6 @@
 import React from "react";
-import { getPageContent } from "@/helpers/getPageContent";
 import { notFound } from "next/navigation";
+import { getPageContent } from "@/helpers/getPageContent";
 
 export default async function page({ params }: { params: { slug: string[] } }) {
 	try {
