@@ -1,6 +1,6 @@
+import { notFound, redirect } from "next/navigation";
 import { getNews } from "@/helpers/homepage";
 import { SingleType } from "@/types/strapi";
-import { notFound, redirect } from "next/navigation";
 
 export async function GET() {
 	const res = await fetch(`${process.env.CMS_API}/home?populate=deep`, {
@@ -19,7 +19,6 @@ export async function GET() {
 	try {
 		homePageData = (await res.json()) as SingleType;
 	} catch (e) {
-		console.log(e);
 		throw new Error("Failed to parse homepage data");
 	}
 

@@ -27,7 +27,6 @@ export async function getPageContent(slug: string[]) {
 
 		data = await response.json();
 	} catch (error) {
-		console.error("Error fetching menu data:", error);
 		return { error: "Failed to fetch menu data" };
 	}
 
@@ -47,7 +46,6 @@ export async function getPageContent(slug: string[]) {
 
 		pageContent = await pageRes.json();
 	} catch (error) {
-		console.error("Error fetching page data:", error);
 		return { error: "Failed to fetch page data" };
 	}
 

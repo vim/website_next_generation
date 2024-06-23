@@ -35,7 +35,6 @@ async function getPageProps() {
 		const data = await response.json();
 		return data.data.attributes.items.data;
 	} catch (error) {
-		console.error("Error fetching page props:", error);
 		return [];
 	}
 }
@@ -47,14 +46,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 	try {
 		pageProps = await getPageProps();
 	} catch (error) {
-		console.error("Error getting page props:", error);
 		pageProps = [];
 	}
 
 	try {
 		session = await getServerSession();
 	} catch (error) {
-		console.error("Error getting server session:", error);
 		session = null;
 	}
 

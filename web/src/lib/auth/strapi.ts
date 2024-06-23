@@ -14,7 +14,6 @@ export const signIn = async (email: string, password: string) => {
 		});
 		return await response.json();
 	} catch (e) {
-		console.log(e);
 		return null;
 	}
 };
@@ -37,7 +36,6 @@ export const signUp = async (username: string, email: string, password: string, 
 
 		return await response.json();
 	} catch (e) {
-		console.log(e);
 		return null;
 	}
 };
