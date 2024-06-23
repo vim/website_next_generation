@@ -28,21 +28,35 @@ async function getPageProps() {
 	const query = qs.stringify(params, { addQueryPrefix: true });
 
 	try {
-		const response = await fetch(`${process.env.CMS_API}/menus/1${query}`, {
-			// headers: {
-			//     authorization: `Bearer ${process.env.CMS_TOKEN}`,
-			// },
-		});
-
-		return (await response.json()).data.attributes.items.data;
+		const response = await fetch(`${process.env.CMS_API}/menus/1${query}`);
+		if (!response.ok) {
+			throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+		}
+		const data = await response.json();
+		return data.data.attributes.items.data;
 	} catch (error) {
+		console.error("Error fetching page props:", error);
 		return [];
 	}
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-	const pageProps = await getPageProps();
-	const session = await getServerSession();
+	let pageProps;
+	let session;
+
+	try {
+		pageProps = await getPageProps();
+	} catch (error) {
+		console.error("Error getting page props:", error);
+		pageProps = [];
+	}
+
+	try {
+		session = await getServerSession();
+	} catch (error) {
+		console.error("Error getting server session:", error);
+		session = null;
+	}
 
 	return (
 		<SessionProvider session={session}>
