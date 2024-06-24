@@ -16,6 +16,6 @@
     "lint-staged": "^15.2.7"
   },
   "dependencies": {
-    "@strapi/strapi": "^4.25.0"
+    "@strapi/strapi": "^4.25.1"
   }
 }
