@@ -28,7 +28,7 @@ jobs:
         test -f .env || cp .env.example .env
 
     - name: copy files to server
-      uses: appleboy/scp-action@v0.1.3
+      uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
