@@ -1,3 +1,4 @@
+import { notFound, redirect } from "next/navigation";
 import { getNews } from "@/helpers/homepage";
 import { SingleType } from "@/types/strapi";
 
@@ -9,18 +10,27 @@ export async function GET() {
 	});
 
 	if (!res.ok) {
+		handleHTTPError(res.status);
 		throw new Error("Fetching single type component home failed");
 	}
 
-	const homePageData = (await res.json()) as SingleType;
+	let homePageData: SingleType;
 
-	if (!homePageData.data.attributes.body) {
+	try {
+		homePageData = (await res.json()) as SingleType;
+	} catch (e) {
+		throw new Error("Failed to parse homepage data");
+	}
+
+	if (!homePageData?.data.attributes.body) {
 		return Response.json("Homepage contains no data");
 	}
 
 	const newsSections = homePageData.data.attributes.body.flatMap((contentEntry, i) => {
-		if ("newsCount" in contentEntry) return { index: i, newsCount: contentEntry.newsCount, headline: contentEntry.headline };
-		else return [];
+		if ("newsCount" in contentEntry) {
+			return { index: i, newsCount: contentEntry.newsCount, headline: contentEntry.headline };
+		}
+		return [];
 	});
 
 	for (const newsSectionEntry of newsSections) {
@@ -30,4 +40,15 @@ export async function GET() {
 	}
 
 	return Response.json(homePageData.data.attributes);
+}
+
+function handleHTTPError(errorCode: number) {
+	switch (errorCode) {
+		case 400:
+			return notFound();
+		case 500:
+			return redirect("/error/500");
+		default:
+			throw new Error("Fetching homepage data failed with status: " + errorCode);
+	}
 }

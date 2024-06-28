@@ -50,14 +50,14 @@ export async function getNews(count: number = 5): Promise<NewsCollection> {
 	const query = qs.stringify(
 		{
 			pagination: {
-				pageSize: count,
-				page: 1,
+				limit: count,
 			},
 		},
 		{
 			encodeValuesOnly: true,
 		}
 	);
+
 	const response = await fetch(`${process.env.CMS_API}/newsposts?${query}`);
 
 	if (!response.ok) {

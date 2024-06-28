@@ -35,7 +35,7 @@ export const signUp = async (username: string, email: string, password: string, 
 		});
 
 		return await response.json();
-	} catch {
+	} catch (e) {
 		return null;
 	}
 };
