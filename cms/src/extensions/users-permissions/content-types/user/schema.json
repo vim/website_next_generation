@@ -71,6 +71,18 @@
     "migrated_pw": {
       "type": "boolean",
       "default": false
+    },
+    "scripts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::script.script",
+      "mappedBy": "user"
+    },
+    "script_sources": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::script-source.script-source",
+      "mappedBy": "user"
     }
   }
 }

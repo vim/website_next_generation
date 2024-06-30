@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "script_ratings",
+  "info": {
+    "singularName": "script-rating",
+    "pluralName": "script-ratings",
+    "displayName": "Script Rating",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "creation_date": {
+      "type": "datetime"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "script": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::script.script",
+      "inversedBy": "script_ratings"
+    }
+  }
+}

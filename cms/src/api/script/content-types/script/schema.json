@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scripts",
+  "info": {
+    "singularName": "script",
+    "pluralName": "scripts",
+    "displayName": "Script",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "script_name": {
+      "type": "string"
+    },
+    "script_type": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "install_details": {
+      "type": "text"
+    },
+    "ratings": {
+      "type": "integer"
+    },
+    "rating_score": {
+      "type": "integer"
+    },
+    "last_updated_by": {
+      "type": "integer"
+    },
+    "last_update_date": {
+      "type": "datetime"
+    },
+    "creation_date": {
+      "type": "datetime"
+    },
+    "script_sources": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::script-source.script-source",
+      "mappedBy": "script"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "scripts"
+    },
+    "script_ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::script-rating.script-rating",
+      "mappedBy": "script"
+    }
+  }
+}

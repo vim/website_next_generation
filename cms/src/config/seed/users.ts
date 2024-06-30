@@ -1,23 +1,4 @@
-interface Strapi {
-	entityService: {
-		count: (query: string) => Promise<number>;
-		create: (query: string, data: { data: User }) => Promise<void>;
-	};
-}
-
-interface User {
-	username: string;
-	email: string;
-	provider: string;
-	password: string;
-	resetPasswordToken: null;
-	confirmationToken: null;
-	confirmed: boolean;
-	blocked: boolean;
-	role: number;
-	old_pw_hash: null;
-	migrated_pw: boolean;
-}
+import { Strapi, User } from "./interfaces";
 
 export async function seedUsers(strapi: Strapi) {
 	const amountOfUsers = 10;
@@ -26,6 +7,7 @@ export async function seedUsers(strapi: Strapi) {
 		if (count === 0) {
 			for (let i = 0; i < amountOfUsers; i++) {
 				const user: User = {
+					id: i + 1,
 					username: `dummyUser${i}`,
 					email: `dummyUser${i}@example.com`,
 					provider: "local",
@@ -40,7 +22,7 @@ export async function seedUsers(strapi: Strapi) {
 				};
 				await strapi.entityService.create("plugin::users-permissions.user", { data: user });
 			}
-			console.log("SUCCESS: Created user on bootstrap");
+			console.log("SUCCESS: Created users on bootstrap");
 		} else {
 			console.log("INFO: User have already been created on bootstrap");
 		}
