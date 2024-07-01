@@ -11,7 +11,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@types/node": "^20.14.2",
+    "@types/node": "^20.14.9",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7"
   },
