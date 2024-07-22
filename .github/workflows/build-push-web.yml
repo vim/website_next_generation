@@ -39,7 +39,7 @@ jobs:
             ghcr.io/${{ github.repository }}/web
 
       - name: Build and push Docker images
-        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25
+        uses: docker/build-push-action@1ca370b3a9802c92e886402e0dd88098a2533b12
         with:
           context: ./web
           file: ./web/Dockerfile.prod
