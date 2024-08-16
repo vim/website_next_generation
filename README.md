@@ -11,6 +11,12 @@ Soon there will be a test system where you can follow the current status success
 
 Of course, we will involve you, the community, in the design by collecting ideas and feedback.
 
+# Getting started
+
+To initially build the project on your local computer, you can use the docker-compose.local.yml file, e.g. with docker compose -f docker-compose.local.yml up --build 
+
+For more information about the headless CMS used in this project, visit the official documentation: https://docs.strapi.io/
+
 
 # Requirements
 
